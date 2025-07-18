@@ -1,4 +1,7 @@
 # 요약
+## (1일 + 2일)
+
+markdown: 이쁘게 만들기
 
 1. **Working directory**: (ls는 리스트 폴더 안에 있는 친구들) init 하고 status 하면 나오는 빨간 친구들
 2. **Staging Area**: add 했을 때 나오는 초록
