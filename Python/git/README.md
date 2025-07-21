@@ -1,10 +1,9 @@
 # 요약
-## (1일 + 2일)
-
 markdown: 이쁘게 만들기
 
-1. **Working directory**: (ls는 리스트 폴더 안에 있는 친구들) init 하고 status 하면 나오는 빨간 친구들
-2. **Staging Area**: add 했을 때 나오는 초록
+# git
+1. **Working directory**: (ls는 리스트 폴더 안에 있는 친구들) init 하고 status 하면 나오는 빨간 친구들 있는 곳
+2. **Staging Area**: add 했을 때 나오는 초록친구들 있는 곳
 3. **Repository**: commit 하면 들어가는 곳들
 ---
     1. ls: 현재 위치  
@@ -14,7 +13,6 @@ markdown: 이쁘게 만들기
     5. cd: 위치 옮기기  
     6. ., ..: 현재 위치, 상위 폴더
 ---
-## git
 
 1. init: 관리 시작 (git init)  
 2. add: 저장 안된 친구들 Staging Area에 집어넣기 (git add 파일명)  
@@ -27,7 +25,7 @@ markdown: 이쁘게 만들기
 9. git rm --cached:초록에 있는 거 빨강으로(commit이 없을 때)  
 10. git restore --staged:초록에 있는 거 빨강으로(commit이 있을 때)
 ---
-## github
+# github
 1. git remote add origin url: remote add=저장소에 올리기, origin=별칭 보통은 origin, 저장소 주소
 2. git remote -v: 등록 됐나 위치 확인
 3. git remote rm (이름, TIL or 주소)
@@ -35,3 +33,4 @@ markdown: 이쁘게 만들기
 5. git pull origin master: 저장소에서 가져오기  
 6. git clone remote_repo-url: 저장소에 있는 거 아예 복제(보통 처음에 시작할 때 함)  
 7. .gitignore: 숨김파일(허브에 올리기 싫은 친구들)
+
