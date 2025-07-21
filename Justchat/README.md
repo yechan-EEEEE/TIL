@@ -13,3 +13,4 @@ print('잔디')
 자동저장 됐냐?
 # 25.07.21
 **누나 피드백 받고 폴더 구조 또 수정**
+git config user email에서 gmail com 사이에 .이 빠져서 commit을 안한 거로 인식됨 한번 바꿔보자
