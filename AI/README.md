@@ -1,7 +1,3 @@
-아 여기 뭐 써있었드라
-
-아 ChatGPT랑 등등
-
 # ChatGPT:
 ### Generative AI: 생성모델  
 - 콘텐츠 생성해주는 인공지능 모델
@@ -19,25 +15,26 @@
 - 스케일링 가능
     - 대규모 데이터 및 파라미터로 확장 가능  
 **GPT모델**은 특히 디코더 부분만을 사용
-![attention매커니즘](Attention_매커니즘.jpg)
+![attention매커니즘](image/Attention_매커니즘.jpg)
+
 # API
 ## Interface
-![interface](Interface.jpg)
+![interface](image/Interface.jpg)
 UI(User interface): 그래픽, 화면적 요소
 ## CS
-![CS](CS.jpg)
+![CS](image/CS.jpg)
 공부할 거 겁나 많다고 하심 ㅠ
 ## API, API key
-![API](API_1.jpg)
-![Key](API_Key.jpg)
-![Key1](API_Key_1.jpg)
+![API](image/API_1.jpg)
+![Key](image/API_Key.jpg)
+![Key1](image/API_Key_1.jpg)
 ## Prompt Engineering
 prompt로 하는 AI랑 놀기 쪼꼼 재밌음
-![Parameter](OpenAPI_parameter.jpg)
-![temperature](OpenAPI_temperature.jpg)
-![top_p](OpenAPI_top_p.jpg)
-![+1](OpenAPI_temperature+top_p1.jpg)
-![+2](OpenAPI_temperature+top_p2.jpg)
+![Parameter](image/OpenAPI_parameter.jpg)
+![temperature](image/OpenAPI_temperature.jpg)
+![top_p](image/OpenAPI_top_p.jpg)
+![+1](image/OpenAPI_temperature+top_p1.jpg)
+![+2](image/OpenAPI_temperature+top_p2.jpg)
 ## 바이브 코딩
 그냥 말하는대로 다 만들어줌, 자세하게 말할수록 좋음
-![설명_페이지](https://married-spot-253.notion.site/with-Copilot-2303cb37136a80d9ab17c275dd65eb1b)
+[설명_페이지](https://married-spot-253.notion.site/with-Copilot-2303cb37136a80d9ab17c275dd65eb1b)
