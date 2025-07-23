@@ -12,3 +12,12 @@
 2. AI Tool 종류
 - GPTS: 개인비서 느낌
 - etc. : ![ToolList](image/AI_Tool.jpg)
+# 25.07.23
+1. AI 광고영상 제작
+    - 영상 제작 작업 마무리, ppt 제작 마무리, 발표
+2. AI 피규어 만들기
+    - 프롬프트로 세계관, 주인공, 컨셉 등 AI 사용해서 제작  
+    만들어진 결과물로 이미지 생성  
+    이미지 3D 파일로 변환 후 3D 프린팅
+3. 사용한 Tool
+    - Meshy(3D 파일 변환, STL), Womp(모델링), Bambu Studio(3D프린팅)
