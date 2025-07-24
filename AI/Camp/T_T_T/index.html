@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 32px; margin-bottom: 0.5em;">
+        <h1 style="margin: 0;">Tic Tac Toe</h1>
+        <div id="scoreboard" style="min-width: 260px; min-height: 48px; background: #fff7f2; border-radius: 16px; box-shadow: 0 2px 12px 0 rgba(255,111,97,0.10); display: flex; align-items: center; justify-content: center; font-size: 1.5em; font-weight: bold; color: #FF6F61; padding: 0 24px; border: 2px solid #FFD6C0;"></div>
+    </div>
+    <form id="player-form" style="display: flex; gap: 16px; margin-bottom: 24px; align-items: center;">
+        <input type="text" id="playerX" placeholder="Player X 이름" required style="font-size:1.2em; padding: 6px 12px; border-radius: 8px; border: 1px solid #FFD6C0;">
+        <span style="font-size:1.2em; color:#FF6F61;">vs</span>
+        <input type="text" id="playerO" placeholder="Player O 이름" required style="font-size:1.2em; padding: 6px 12px; border-radius: 8px; border: 1px solid #FFD6C0;">
+        <button type="submit" id="startBtn" style="font-size:1.1em; padding: 6px 18px; border-radius: 8px; background: linear-gradient(90deg, #FF6F61 0%, #FFBE98 100%); color: #fff; border: none; cursor: pointer; font-weight: bold;">게임 시작</button>
+    </form>
+    <div id="game" style="display:none;"></div>
+    <div id="controls" style="display:none; align-items: center; gap: 16px;">
+        <button id="reset">Reset</button>
+        <label class="switch">
+            <input type="checkbox" id="mode-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
