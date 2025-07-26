@@ -1,6 +1,6 @@
 T = int(input())
 
-for test_case in range(1, T + 1):
+for num in range(1, T + 1):
     N, M = map(int, input().split())
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
@@ -18,4 +18,4 @@ for test_case in range(1, T + 1):
             temp_sum += A[j] * B[i + j]
         max_sum = max(max_sum, temp_sum)
 
-    print(f"#{test_case} {max_sum}")
+    print(f"#{num} {max_sum}")
