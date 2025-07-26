@@ -10,7 +10,7 @@ for num in range(1, T + 1):
         A, B = B, A
         N, M = M, N
 
-    max_sum = float('-inf')
+    max_sum = 0
 
     for i in range(M - N + 1):
         temp_sum = 0
