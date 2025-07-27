@@ -1,3 +1,14 @@
-A = int(input())
-B = int(input.split)
-print(B)
+A = int(input()) 
+B = input()
+print(A*int(B[2]))
+print(A*int(B[1]))
+print(A*int(B[0]))
+print(A*int(B))
+
+'''
+A는 정수로 받아서 두고
+B를 받아서 리스트로 만들고 나눈 다음 다시 정수로 저장하고 3번째 2번쨰 1번째랑 곱한 값 출력하고
+마지막엔 A, B 그냥 곱하기? 그럼 C에다가 리스트 나눈 거를 저장해야하나
+그냥 받으면 리스트임
+B의 자리수마다 곱해주고서 마지막엔 B정수형으로 바꿔서 곱하면 끝
+'''
