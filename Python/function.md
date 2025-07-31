@@ -47,7 +47,7 @@ Local : 함수 안에 있는 친구들
 # 패킹, 언패킹
 - *로 패킹하기: a, *b, c하면 a c가 첫 끝값 b가 가운데 나머지 다
 - *로 언패킹하기: [](image/star_unpacking.jpg)
-- **로 언패킹: [](image/2star_unpacking.jpg)
+- **로 언패킹: [](image/2star_unpacking.jpeg)
 # 모듈
 - 다른 사람이 만들어둔 변수+함수 갖고오기(import로)/from으로 특정 함수만 가져오기도 가능한데 복잡해짐/(모듈.함수)로 사용
 - as 키워드: 2개 이상의 모듈에서 이름이 같은 변수, 함수가 있으면 별명으로 만들어서 사용
