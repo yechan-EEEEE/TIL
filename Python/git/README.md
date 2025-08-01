@@ -34,3 +34,5 @@ markdown: 이쁘게 만들기
 6. git clone remote_repo-url: 저장소에 있는 거 아예 복제(보통 처음에 시작할 때 함)  
 7. .gitignore: 숨김파일(허브에 올리기 싫은 친구들)
 
+git add -p
+git stash
