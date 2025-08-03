@@ -40,7 +40,7 @@
     - L.count(x): 리스트에서 x개 몇개인지 반환
     - L.reverse(): 리스트 순서 거꾸로 뒤집기(정렬은 아님)
     - L.sort(): 오름차순으로 정렬
-### append, extend, imsert, remove
+### append, extend, insert, remove
 ## 딕셔너리
 값 추가할 때 [키]:벨류
     - get(key[default],'): 키의 value 반환하거나 키 없으면 None, 뒤에 적은 값
