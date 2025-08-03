@@ -19,7 +19,7 @@
     - ![](image/List_Comprehension.jpg)
     - ![](image/List_Comprehension1.jpg)
     - ![](image/ListComprehension.jpg)
-- enumerate(자주 사용, iterable, start=0): iterable 객체의 요소에 인덱스와 함께 반환하는 내장함수[1](image/enumerate.jpg)
+- enumerate(자주 사용, iterable, start=0): iterable 객체의 요소에 인덱스와 함께 반환하는 내장함수![1](image/enumerate.jpg)
 - 반복문 제어
     - break: 반복 즉시 정지
     - continue: 다음 반복으로 건너뛰기
