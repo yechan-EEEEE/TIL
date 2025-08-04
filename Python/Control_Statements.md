@@ -9,8 +9,8 @@
         - 반복 가능한 객체: 형식 전부 다
         - 문자열 순회: ex) str 형식이면 하나하나 s,t,r
         - range: ex) range(5): 0,1,2,3,4 출력
-        - 딕셔너리 순회: !(image/딕셔너리_순회.jpg)
-        - 인덱스로 리스트 순회: !(image/인덱스로_리스트순회.jpg)
+        - 딕셔너리 순회: ![](image/딕셔너리_순회.jpg)
+        - 인덱스로 리스트 순회: ![](image/인덱스로_리스트순회.jpg)
         - 중첩 반복문: 안에 드간 반복문 끝나야 위에 반복문으로 돌아감
         - for else: for if 안에 break가 한번도 안되면 for else에 있는 코드블록 실행
     - while (조건식): 조건식이 f가 될 때까지 반복, 반드시 종료 조건 필요
@@ -19,7 +19,7 @@
     - ![](image/List_Comprehension.jpg)
     - ![](image/List_Comprehension1.jpg)
     - ![](image/ListComprehension.jpg)
-- enumerate(자주 사용, iterable, start=0): iterable 객체의 요소에 인덱스와 함께 반환하는 내장함수[1](image/enumerate.jpg)
+- enumerate(자주 사용, iterable, start=0): iterable 객체의 요소에 인덱스와 함께 반환하는 내장함수![1](image/enumerate.jpg)
 - 반복문 제어
     - break: 반복 즉시 정지
     - continue: 다음 반복으로 건너뛰기
