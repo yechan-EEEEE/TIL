@@ -22,7 +22,26 @@ output:
 
 
 '''
-T = int(input())
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
-    pass
+# T = int(input())
+# # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+# for test_case in range(1, T + 1): # 1부터 T만큼 반복
+#     x = int(input()) # 입력한 양수의 개수를 int형으로 x에 넣는다
+#     a = list(map(int,input().split()))
+#     # input으로 받으면 str임, split을 해서 하나씩 나눠줌, list(map(int)) 나눠준 애들을 int로 바꾸고 list에 넣음
+#     max_num = a[0] # a의 첫번째 값 max_num에 넣기
+#     min_num = a[0] # a의 첫번째 값 min_num에 넣기
+
+#     for n in a: # n이라는 임의변수에다가 a 값 넣는 걸 반복
+#         if n > max_num: # a의 첫번째 값이 max_num 보다 크면
+#             max_num = n # a의 첫번째 값을 max_num 에 넣기
+#         if n < min_num: # a의 첫번째 값이 min_num 보다 작으면
+#             min_num = n # a의 첫번째 값을 min_num 에 넣기
+#     Answer = max_num - min_num # Answer 에 위 if 문으로 만든 최대값 - 최소값 결과 넣기
+#     print(f'#{test_case} {Answer}') # f스트링으로 
+# a = input()
+# b = (input().split())
+# c = list(map(int,input().split()))
+# print(a)
+# print(b)
+# print(c)
+# 위에 안보고 만들어보자
