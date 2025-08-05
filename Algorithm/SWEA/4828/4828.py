@@ -113,17 +113,5 @@ for test_case in range(1,T+1):
         if num < min_num:
             min_num = num
     result = max_num - min_num
-print(f'#{test_case} {result}')
+    print(f'#{test_case} {result}')
 # 성공!
-
-
-
-
-
-
-
-
-
-
-
-
