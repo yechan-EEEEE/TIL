@@ -45,7 +45,79 @@ output:
 # print(b)
 # print(c)
 # 위에 안보고 만들어보자
+<<<<<<< HEAD
 T = int(input())
 
 for Test_number in range(1,T+1):
     
+=======
+
+'''
+첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )
+각 케이스의 첫 줄에 양수의 개수 N이 주어진다. ( 5 ≤ N ≤ 1000 )
+다음 줄에 N개의 양수 ai가 주어진다. ( 1 ≤ ai≤ 1000000 )
+'''
+# T = int(input())
+# for test_case in range(1,T+1):
+#
+#     Number = int(input())
+#     ai = list(map(int,input().split()))
+#
+#     max_num = [0] 여기에서 실패 max_num이랑 min_num에 그냥 0을 넣어버림 ai의 첫번째 값 넣는건데
+#     min_num = [0]
+#
+#     for num in ai:
+#         if num > max_num:
+#             max_num = num
+#         if num < min_num:
+#             min_num = num
+#
+#     result = max_num - min_num
+#     print(f'#{test_case} {result}')
+# 다시 도전
+
+'''
+첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )
+각 케이스의 첫 줄에 양수의 개수 N이 주어진다. ( 5 ≤ N ≤ 1000 )
+다음 줄에 N개의 양수 ai가 주어진다. ( 1 ≤ ai≤ 1000000 )
+'''
+
+# T = int(input())
+#
+# for test_case in range(1,T+1):
+#     N = int(input())
+#     ai = list(map(int,input().split()))
+#
+#     max_num = ai[0]
+#     min_num = ai[0]
+#
+#     for num in ai:
+#         if num > max_num:
+#             num = max_num # 여기서 틀림, max_num에다 num 값을 넣어주는 건데 거꾸로 써버림;
+#         if num < min_num:
+#             num = min_num
+#     result = max_num - min_num
+#     print(f'#{test_case} {result}')
+# 마지막 도전
+'''
+첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )
+각 케이스의 첫 줄에 양수의 개수 N이 주어진다. ( 5 ≤ N ≤ 1000 )
+다음 줄에 N개의 양수 ai가 주어진다. ( 1 ≤ ai≤ 1000000 )
+'''
+T = int(input())
+
+for test_case in range(1,T+1):
+    N = int(input())
+    ai = list(map(int,input().split()))
+
+    max_num = ai[0]
+    min_num = ai[0]
+
+    for num in ai:
+        if num > max_num:
+            max_num = num
+        if num < min_num:
+            min_num = num
+    result = max_num - min_num
+    print(f'#{test_case} {result}')
+# 성공!
