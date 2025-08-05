@@ -39,7 +39,7 @@ for text_case in range(1,T+1):
     
     # 왼쪽부터 작은 수니까 오른쪽으로 가면서 크거나 같은 값 있으면 걔 칸이랑 안에 몇인지 출력하기
     max_num = 0 # 제일 큰 수
-    max_card = 0 # 제일 만은 카드 수
+    max_card = 0 # 제일 많은 카드 갯수
 
     for j in range(10): 
         if card_num[j] >= max_card: # 0번부터 차례대로 넣어보고 제일 큰 수 칸이랑 안에 몇인지 찾기
