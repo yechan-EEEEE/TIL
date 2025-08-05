@@ -45,3 +45,7 @@ output:
 # print(b)
 # print(c)
 # 위에 안보고 만들어보자
+T = int(input())
+
+for Test_number in range(1,T+1):
+    
