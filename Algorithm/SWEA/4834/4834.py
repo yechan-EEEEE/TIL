@@ -32,6 +32,17 @@ for text_case in range(1,T+1):
     N = int(input())
     card = list(map(int,input()))
     print(card)
-    card_num = [0]*10
+    card_num = [0]*10 # 숫자 들어갈 10칸 짜리 리스트 만들기
     print(card_num)
-    # for max_num in 
+    for i in card:  # 앞에서부터 하나씩 자기 자리에 넣기
+        card_num[i] +=1
+    
+    # 왼쪽부터 작은 수니까 오른쪽으로 가면서 크거나 같은 값 있으면 걔 칸이랑 안에 몇인지 출력하기
+    max_num = 0
+    max_card = 0
+
+    for j in range(10): 
+        if card_num[j] >= max_card: # 0번부터 차례대로 넣어보고 제일 큰 수 칸이랑 안에 몇인지 찾기
+            max_num = j
+            max_card = card_num[j]
+    print(f"#{text_case} {max_num} {max_card}")
