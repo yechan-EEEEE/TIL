@@ -45,12 +45,10 @@ output:
 # print(b)
 # print(c)
 # 위에 안보고 만들어보자
-<<<<<<< HEAD
-T = int(input())
 
-for Test_number in range(1,T+1):
-    
-=======
+# T = int(input())
+
+# for Test_number in range(1,T+1):
 
 '''
 첫 줄에 테스트 케이스의 수 T가 주어진다. ( 1 ≤ T ≤ 50 )

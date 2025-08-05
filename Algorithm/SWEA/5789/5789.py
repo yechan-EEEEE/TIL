@@ -39,8 +39,22 @@ ex) 1 3 이 들어오면 1번째 상자부터 3개의 상자를 1로 바꿔준�
 
 
 '''
+# 내꺼
 T = int(input())
+for box in range(1,T+1):
+    N,Q = list(map(int,input().split())) # N, Q 에다가 입력된 숫자 들을 넣어준다
+ 
+    box_num = [0]*N # 빈 리스트 만들기
+    for num in range(1,Q+1): # Q만큼 반복해서 바꿔줘야 하니까
+        N_1,Q_1 = list(map(int,input().split())) # 숫자 2개 받아두기
+        for list_num in range(N_1,Q_1+1):# N_1번부터 Q_1번 상자까지 반복 /원래 내 것처럼 하면 Q_1+1이라서 index error
+            box_num[list_num-1]=N_1# 빈 리스트 box_num에다가 N_1-1번 상자부터 Q_1-1번 상자까지 N_1 값으로 바꿔줘야함
+ 
+    result = list(map(str, box_num))
+    print(f'#{box} {" ".join(result)}')
 
+# 수정본
+T = int(input())
 for box in range(1,T+1):
     N,Q = map(int,input().split()) # N, Q 에다가 입력된 숫자 들을 넣어준다
 
