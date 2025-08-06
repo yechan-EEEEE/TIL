@@ -198,18 +198,18 @@
 #     # 1 짬뽕
 #     # 2 탕수육
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-T = int(input())
-for test_case in range(1, T + 1): # 1부터 T만큼 돌기
-    x = int(input())
-    a = list(map(int,input().split()))
-    # a = [들온 애들 순서대로 드가있음]
-    max_num = a[0]
-    min_num = a[0]
-
-    for n in a:
-        if n > max_num:
-            max_num = n
-        if n < a:
-            min_num = n
-    Answer = max_num - min_num
-    print(f"#{test_case} {Answer}")
+# T = int(input())
+# for test_case in range(1, T + 1): # 1부터 T만큼 돌기
+#     x = int(input())
+#     a = list(map(int,input().split()))
+#     # a = [들온 애들 순서대로 드가있음]
+#     max_num = a[0]
+#     min_num = a[0]
+#
+#     for n in a:
+#         if n > max_num:
+#             max_num = n
+#         if n < a:
+#             min_num = n
+#     Answer = max_num - min_num
+#     print(f"#{test_case} {Answer}")
