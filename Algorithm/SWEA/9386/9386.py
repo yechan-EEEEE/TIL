@@ -1,56 +1,26 @@
-'''
-N개의 0과 1로 이루어진 수열에서 연속한 1의 개수 중 최대값을 출력하는 프로그램을 만드시오.
 
-입력
-첫 줄에 테스트케이스 개수 T, 다음 줄부터 테스트케이스별로 첫 줄에 수열의 길이 N, 다음 줄에 N개의 0과1로 구성된 수열이 공백없이 제공된다.
-1<=T<=10, 10<=N<=1000
-
-출력
-#과 테스트케이스 번호, 빈칸에 이어 답을 출력한다.
-
-입력 예
-3
-10
-0011001110
-10
-0000100001
-10
-0111001111
-
-출력 예
-#1 3
-#2 1
-#3 4
-
-N이 들어와요 얘는 수열 길이
-그 다음 0과1로 된 수열이 들어와요 그럼 얘들 또 나눠줘야겠네요
-line_num에 리스트로 저장합시다
-연속된 1의 개수?
-다 나눠서 볼 때 처음 1이 나왔을 때 con_num에다가 1을 더하고 다음 것도 1이면 1 더하기 반복 이걸 N번 해야겠네요
-그러다가 0이 나오면 스탑하고 con_num이 max_num보다 크면 max_num을 con_num 값으로 바꿔줘요
-이렇게 하려면 break? continue?
-
-0 0 1 1 0 0 1 1 1 0
-처음부터 끝까지 돌거니깐 N만큼 돌아요
-for i 라고 치면 line_num[i]가 0인지 1인지 확인해요
-0이면 pass 1이면 con_num에다가 1을 더해줘요
-다음 것도 1이면 con_num에다가 1을 또 더해주고
-0이면 더하기 멈추고 그 값을 max_num이랑 비교해서 max_num보다 크면 max_num에 con_num 값을 입력해요
-이걸 끝까지 반복하면 될 것 같은데
-중간에 끊겼을 때 max_num 값 바꾸고 con_num을 0으로 초기화? 하면 되려나
-
-
-'''
 T = int(input())
-N = int(input())
-line_num = list(map(int,input().split()))
-con_num = 0
-for i in range(N):
 
-
-# print(f'#{test_case} {con_num}')
-# print()
-
+for test_case in range(1,T+1):
+    N = int(input())
+    line_num = list(map(int,input().strip()))
+    # print(line_num)
+    con_num = 0 #이어지고 있는 1의 수
+    max_num = 0 #1이 이어진 경우 최대값
+    for i in range(N):
+        # print(i)
+        if line_num[i] == 1: #들어온 리스트 i번이 1이면
+            con_num += 1    #이어지고 있던 1의 수에다 1씩 더해줘요
+            if con_num > max_num: #이 수가 최대값보다 크면?
+                max_num = con_num #최대값을 갱신해줘요
+            # print(con_num)
+        elif line_num[i] == 0: #i번이 0이면?
+            if  con_num > max_num: #0인데 지금까지 이어졌던 1의 값이 max에 들어있던 값보다 크면
+                max_num = con_num #max_num을 갱신해주고
+            # print(max_num)
+            con_num = 0 #con을 초기화해주고 다시 반복을 시작해요
+               
+    print(f'#{test_case} {max_num}')
 
 
 
