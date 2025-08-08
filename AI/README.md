@@ -18,6 +18,7 @@
 ![attention매커니즘](image/Attention_매커니즘.jpg)
 
 # API
+- 두 소프트웨어가 서로 통신할 수 있게 해주는 매커니즘
 ## Interface
 ![interface](image/Interface.jpg)
 UI(User interface): 그래픽, 화면적 요소
@@ -38,3 +39,5 @@ prompt로 하는 AI랑 놀기 쪼꼼 재밌음
 ## 바이브 코딩
 그냥 말하는대로 다 만들어줌, 자세하게 말할수록 좋음
 [설명_페이지](https://married-spot-253.notion.site/with-Copilot-2303cb37136a80d9ab17c275dd65eb1b)
+
+Oauth
