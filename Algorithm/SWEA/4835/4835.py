@@ -35,6 +35,7 @@ max랑 min 변수 만들어두고 맨 처음 더한 값을 거기 넣어두고 �
 아 N 정수로 두고 빈 리스트 * N 하는거였지'
 for 문으로 리스트 0번 칸부터
 '''
+'''
 T = int(input())
 for test_case in range(1,T+1):
     N, M = list(map(int,input().split()))
@@ -85,7 +86,7 @@ for test_case in range(1,T+1):
     #     result = max_num - min_num
     # print(f'#{test_case} {result}',end=" ")
     # print()
-
+'''
 '''
 0 1 2 더하려면 
         for j in range(M): # list_num[0]~[M-1] 까지 더해야한다
@@ -120,7 +121,29 @@ result = max - num 하고
 밖에다가 출력
 
 '''
+T = int(input()) # 테스트케이스 개수 입력
+for test_case in range(1,T+1): # 테스트 케이스 수 만큼 반복하기
+    N, M = list(map(int,input().split())) # 몇개의 수, 구간을 몇개로 할지 받아서 정수로 바꾸고 리스트에다 저장
+    input_num = list(map(int,input().split())) # 입력받은 정수들을 쭉 정수로 바꾸고 리스트에다 저장
+    first_num = 0
+    for num in range(M):
+        first_num += input_num[num] # 맨 앞 숫자부터 정해진 구간까지의 첫번째 합을 저장해둠
+    max_num = first_num # 첫번째 합을 가장 큰 값, 가장 작은 값이라고 저장
+    min_num = first_num 
 
+    for j in range(N-M+1): # 구간을 튀어나가면 안되니까 반복 횟수를 정해줌 1번 케이스에선 10개니깐 6 7 8 9 10 이렇게 6번까지만 반복되게
+        sum_num = 0 # 구간합 변수를 0으로 저장해둠 여기다 둬야 구간합 반복이 끝나고 0으로 초기화됨
+        for k in range(j,j+M): # 
+            sum_num += input_num[k]
+        if sum_num > max_num:
+            max_num = sum_num
+            # max_num = max(max_num,sum_num) # 맥스는 이렇게 쓰면 좋음 비교 안하고
+        if sum_num < min_num:
+            min_num = sum_num
+            # min_num = min(min_num,sum_num) # min도 이렇게 쓰기 비교 안쓰고
+    result = max_num - min_num
+    print(f'#{test_case} {result}', end=" ")
+    print()
 
 
 
