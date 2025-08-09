@@ -56,30 +56,8 @@ NxM개의 풍선에 들어있는 종이 꽃가루 개수 A가 주어지면, 한 
 
 
 '''
-dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-
-T = int(input())
-for test_case in range(1, T + 1):
-    N, M = list(map(int,input().split())) # 행, 열의 수를 입력 받아요
-    dust = [] #꽃가루 들어갈 빈 방
-    for x in range(0,N): # 행의 수만큼 반복해요
-        a = list(map(int,input().split())) # 입력한 숫자를 쭈루룩 받아놓고
-        dust.append(a) # 각 행에다 입력해줘요
-    dx = [0,0,1,-1] # 오른쪽, 왼쪽, 아래, 위 값들
-    dy = [1,-1,0,0]
-    max_num = 0 # 다 더했을 때 최고 값 0으로 만들어두기
-    for i in range(0,N): # 행의 수만큼 반복
-        for j in range(0,M): # 열의 수만큼 반복
-            sum_num=0 # 여기다 이번에 터뜨렸을 때 총합을 넣을거에요
-            sum_num = dust[i][j]# 이제 더해줘야 하는데 여길 어떻게 쓸까요?
-            sum_num += dust[i+dx[i]][j+dy[j]]
-            sum_num += dust[]
-
-
-
-
-    # 꽃가루의 합 중에서 최대값이 가장 큰 값을 저장할 변수
-    max_value = 0
+import sys
+sys.stdin = open('input.txt')
 
 dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
@@ -125,27 +103,4 @@ for tc in range(1, T+1):
 
     print(f"#{tc} {max_value}")
 
-            #        오른쪽   왼쪽     아래      위
-            # dxy =[[0, 1], [0, -1], [1, 0], [-1, 0]]
-            # 처음에 for 문 돌때 [0, 1] => [dx, dy]
-            # dx : 0, dy: 1 => 오른쪽
-            for dx, dy in dxy:
-                # 각 방향으로 한 번만 탐색 X , 몇 번탐색 해야한다 ?? => 꽃가루 개수만큼(arr[i][j])
-                for dist in range(1, arr[i][j] + 1):  # arr[i][j] => 1 일 경우에는, 그대로 dist 1밖에 실행 안된다.
-                    # 델타탐색으로 다음에 이동할 좌표
-                    ni = i + dx * dist
-                    nj = j + dy * dist
-
-                    # 범위를 벗어날 거에요..
-                    # 꽃가루의 누적은 범위 안에 있는 애들한테만 해당한다. .
-                    if 0 <= ni < N and 0 <= j < M:
-                        temp_sum += arr[ni][nj]
-                    else:  # 범위를 벗어난 경우
-                        break
-
-            max_value = max(max_value, temp_sum)
-
-    print(f"#{tc} {max_value}")
 '''
-N, M = list(map(int, input().split()))
-arr = [list(map(int,input().split())) for - in range(N)]
