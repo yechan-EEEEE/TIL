@@ -42,54 +42,64 @@ for i in range(1, N + 1): # 1부터 입력받은 수까지 반복
         string.append(str(i)) # 지금 자기 숫자 빈 리스트에 추가
 result = " ".join(string) # 숫자들 사이에 ' ' 넣어주기
 print(result)
-        # if d==
-    # for e in d :
-    #     if d == 1:
-    #         print('-')
-    #     elif d == 2:
-    #         print('--')
-    #     elif d == 3:
-    #         print('---')
-    #     else:
-    #         print(i)
-    # print(d)
+# N = int(input())
 
-    # for x in str(i):
-#         a = int(x)
-#         if a == 3 or a == 6 or a == 9:
-#             print("-")
-# n = str(N)
-# print(n[0],n[1])
+# for i in range(1, N+1):
+#     if '3' in str(i) or '6' in str(i) or '9' in str(i):
+#         clap_count = str(i).count('3') + str(i).count('6') + str(i).count('9')
+#         print('-' * clap_count, end=' ')
+#     else:
+#         print(i, end=' ')
+'''
+        if d==
+    for e in d :
+        if d == 1:
+            print('-')
+        elif d == 2:
+            print('--')
+        elif d == 3:
+            print('---')
+        else:
+            print(i)
+    print(d)
+
+    for x in str(i):
+        a = int(x)
+        if a == 3 or a == 6 or a == 9:
+            print("-")
+n = str(N)
+print(n[0],n[1])
 
 
-#     count_num = 0
-# num = list(map(int,input().split()))
-# num1 = ' '.join(num)
-# if 3 in num:
-#     print('-')
-# x = [13]
-# ' '.join(x)
-# if 3 in x:
-#     print('-')
-# y = x.split
-# M = ((x.count(3))+(x.count(6))+(x.count(9)))
-# print(x)
-# num = str(input())
-# print(num[0],num[1])
-# ' '.join(x)' '.join(x)
-# X = int(input())
-# print(X)
-# x = str(X)
-# print(x)
-# a = ' '.join(x)
-# print(a[0])
-# print(type(a[0]))
-# b = int(a[0])
-# c = int(a[0][0])
-# d = int(a[2])
-# print(type(b))
-# if b == 3 or b == 6 or b == 9:
-#     print('-')
-#     if c == 3 or c == 6 or c == 9:
-#         print('--')
-# print(f'{a}')
+    count_num = 0
+num = list(map(int,input().split()))
+num1 = ' '.join(num)
+if 3 in num:
+    print('-')
+x = [13]
+' '.join(x)
+if 3 in x:
+    print('-')
+y = x.split
+M = ((x.count(3))+(x.count(6))+(x.count(9)))
+print(x)
+num = str(input())
+print(num[0],num[1])
+' '.join(x)' '.join(x)
+X = int(input())
+print(X)
+x = str(X)
+print(x)
+a = ' '.join(x)
+print(a[0])
+print(type(a[0]))
+b = int(a[0])
+c = int(a[0][0])
+d = int(a[2])
+print(type(b))
+if b == 3 or b == 6 or b == 9:
+    print('-')
+    if c == 3 or c == 6 or c == 9:
+        print('--')
+print(f'{a}')
+'''
