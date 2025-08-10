@@ -121,6 +121,8 @@ result = max - num 하고
 밖에다가 출력
 
 '''
+# import sys
+# sys.stdin = open("input.txt","r")
 T = int(input()) # 테스트케이스 개수 입력
 for test_case in range(1,T+1): # 테스트 케이스 수 만큼 반복하기
     N, M = list(map(int,input().split())) # 몇개의 수, 구간을 몇개로 할지 받아서 정수로 바꾸고 리스트에다 저장
