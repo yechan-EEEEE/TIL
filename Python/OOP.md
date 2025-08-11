@@ -75,7 +75,7 @@
     7. ModuleNotFoundError: 모듈을 찾을 수 없는 경우
     8. InportError: import하려는 이름을 찾을 수 없는 경우
     9. KeyboardInterrupt: 사용자가 Con-C or Delete 누를 때 발생 / 무한루프 시 강제 종료
-		10. IndentationError: 잘못된 들여쓰기와 관련된 문법 오류
+    10. IndentationError: 잘못된 들여쓰기와 관련된 문법 오류
 ## 예외처리
  - try: 코드 작성
  - except: 예외가 발생하면 실행할 코드 작성 | 반드시 하위 클래스부터 확인해야 전부 확인 가능
