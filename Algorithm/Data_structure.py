@@ -29,4 +29,14 @@ class Stack:
         return self.top == -1
     def pop(self):
         if self.is_empty():
-
+            raise IndexError("Stack is empty")
+        item = self.items[self.top]
+        self.items[self.top] = None
+        self.top -= 1
+        return item
+    def is_empty(self):
+        return self.top == -1
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("Stack is empty")
+        return self.items[self.top]
