@@ -15,47 +15,63 @@
 
 '''
 
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = list(map(str, input().split()))  # '#x' 랑 숫자 들어오니까 #x 출력하려고 str 로 받음
+#     input_num = list(map(str, input().split(' ')))  # 입력값이 문자니깐 띄어쓰기를 기준으로 나눠서 리스트에 넣어준다
+#     arr_num = [0]*10  # 0부터 9까지니까 빈칸 10개짜리 리스트를 만들어둔다
+#     for i in range(int(M)):  # 입력된 단어의 갯수만큼 반복
+#         if input_num[i] == 'ZRO':  # 첫번째 칸에 ZRO 가 나올 때마다 1 더해주기 아래 NIN 까지 반복
+#             arr_num[0] += 1
+#         elif input_num[i] == 'ONE':
+#             arr_num[1] += 1
+#         elif input_num[i] == 'TWO':
+#             arr_num[2] += 1
+#         elif input_num[i] == 'THR':
+#             arr_num[3] += 1
+#         elif input_num[i] == 'FOR':
+#             arr_num[4] += 1
+#         elif input_num[i] == 'FIV':
+#             arr_num[5] += 1
+#         elif input_num[i] == 'SIX':
+#             arr_num[6] += 1
+#         elif input_num[i] == 'SVN':
+#             arr_num[7] += 1
+#         elif input_num[i] == 'EGT':
+#             arr_num[8] += 1
+#         elif input_num[i] == 'NIN':
+#             arr_num[9] += 1
+#     print(N)  # 입력했던 테스트 케이스 번호 출력
+#     print('ZRO ' * arr_num[0], end='')  # arr_num 에 들어간 숫자만큼 출력
+#     print('ONE ' * arr_num[1], end='')
+#     print('TWO ' * arr_num[2], end='')
+#     print('THR ' * arr_num[3], end='')
+#     print('FOR ' * arr_num[4], end='')
+#     print('FIV ' * arr_num[5], end='')
+#     print('SIX ' * arr_num[6], end='')
+#     print('SVN ' * arr_num[7], end='')
+#     print('EGT ' * arr_num[8], end='')
+#     print('NIN ' * arr_num[9], end='')
+#     print()
+
+
 T = int(input())
 for tc in range(1, T+1):
-    N, M = list(map(str, input().split()))
-    input_num = []
-    input_num = list(map(str, input().split(' ')))
-    arr_num = [0]*10
-    for i in range(int(M)):
-        if input_num[i] == 'ZRO':
-            arr_num[0] += 1
-        elif input_num[i] == 'ONE':
-            arr_num[1] += 1
-        elif input_num[i] == 'TWO':
-            arr_num[2] += 1
-        elif input_num[i] == 'THR':
-            arr_num[3] += 1
-        elif input_num[i] == 'FOR':
-            arr_num[4] += 1
-        elif input_num[i] == 'FIV':
-            arr_num[5] += 1
-        elif input_num[i] == 'SIX':
-            arr_num[6] += 1
-        elif input_num[i] == 'SVN':
-            arr_num[7] += 1
-        elif input_num[i] == 'EGT':
-            arr_num[8] += 1
-        elif input_num[i] == 'NIN':
-            arr_num[9] += 1
-    print(N)
-    print('ZRO ' * arr_num[0], end='')
-    print('ONE ' * arr_num[1], end='')
-    print('TWO ' * arr_num[2], end='')
-    print('THR ' * arr_num[3], end='')
-    print('FOR ' * arr_num[4], end='')
-    print('FIV ' * arr_num[5], end='')
-    print('SIX ' * arr_num[6], end='')
-    print('SVN ' * arr_num[7], end='')
-    print('EGT ' * arr_num[8], end='')
-    print('NIN ' * arr_num[9], end='')
-    print()
+    N, M = list(map(str, input().split()))  # '#x' 랑 숫자 들어오니까 #x 출력하려고 str 로 받음
+    input_num = list(map(str, input().split(' ')))  # 입력값이 문자니깐 띄어쓰기를 기준으로 나눠서 리스트에 넣어준다
+    arr_num = []  # 0부터 9까지니까 빈칸 10개짜리 리스트를 만들어둔다
+    result = []
+    num_dic = {'ZRO': 0, 'ONE': 1, 'TWO': 2, 'THR': 3, 'FOR': 4, 'FIV': 5, 'SIX': 6, 'SVN': 7, 'EGT': 8, 'NIN': 9}
+    str_dic = {0: 'ZRO', 1: 'ONE', 2:'TWO', 3:'THR', 4:'FOR', 5:'FIV', 6:'SIX', 7:'SVN', 8:'EGT', 9:'NIN'}
 
+    print(input_num)
+    for num in input_num:
+        arr_num.append(num_dic[num])  # 해당 문자에 매칭되는 value -> 숫자가 나온다는 얘기
+    print(arr_num)
+    arr_num.sort()
+    print(arr_num)
 
-
-
+    for num in arr_num:
+        result.append(str_dic[num])
+    print(result)
 
