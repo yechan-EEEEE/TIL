@@ -199,13 +199,33 @@ v 1 2 3 4 5
 #         min_num = min(sum_num, min_num)
 #     result = max_num - min_num
 #     print(f'#{tc} {result}')
+#
+# dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+# N = [[2, 1, 1, 2, 2], [2, 2, 1, 2, 2], [2, 2, 1, 1, 2]]
+# # print(dxy[0])
+# # print(dxy[0][0])
+# # for dx, dy in dxy:
+# #     print(dx, end=' ')
+# #     print(dy)
+# print(dxy[3])
+# print(N[0][4])
+N=3
+matrix = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,10]
+]
 
-dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-N = [[2, 1, 1, 2, 2], [2, 2, 1, 2, 2], [2, 2, 1, 1, 2]]
-# print(dxy[0])
-# print(dxy[0][0])
-# for dx, dy in dxy:
-#     print(dx, end=' ')
-#     print(dy)
-print(dxy[3])
-print(N[0][4])
+result = []
+
+# 각 행의 합을 result에 더할건데
+# 조건: 홀수 행만 넣으세요 ( [1,2,3], [7,8,10] ) 행의 합을 넣으세요
+# result => [6, 25 ]
+for i in range(N):
+    line_sum = 0
+    for j in range(N):
+        if i == 1:
+            break
+        line_sum += matrix[i][j]
+    result.append(line_sum)
+print(result)
