@@ -39,15 +39,22 @@ N x N 크기의 2차원 지도 정보가 주어집니다. 각 칸에는 해당 �
 27 26 13 14 32
                           #3 5
 """
-dxy = [[-1, 0], [1, 0], [-1, 0], [1, 0]]
+dxy = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     grid = [list(map(int, input().split())) for _ in range(N)]
+    print(grid)
     high_num = 0  # 가장 높은 곳의 값
+    start_x = 0  # 가장 높은 곳의 위치
+    start_y = 0
     for x in range(N):  # 최고값 찾기
         for y in range(N):
-            high_num = max(high_num, grid[x][y])
+            if grid[x][y] > high_num:
+                high_num = grid[x][y]
+                start_x = x
+                start_y = y
+    
     cur_num = high_num  # 현재 위치 값을 최고 위치로 설정
     max_mov = 0  # 최대 이동 값
     for i in range(N):  # 순회 시작
