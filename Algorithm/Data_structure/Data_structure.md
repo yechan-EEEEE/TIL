@@ -60,3 +60,28 @@
 재귀함수 기본부분>종료조건 유도부분>작아지는 부분
 ## 팩토리얼
 ## 피보나치 수열
+
+# 큐(queue)
+## 구조와 작동원리
+- 스택과 마찬가지로 삽입과 삭제의 위치가 제한적인 자료구조
+    - 큐는 뒤에서만 삽입 앞에서는 삭제만
+- 선입선출(FIFO,First In First Out)
+## 주요 연산
+- EnQueue
+  - 큐의 뒤쪽에 원소 삽입
+- DeQueue
+  - 큐의 앞쪽에서 원소 삭제하고 반환
+- IsEmpty
+  - 공백인지 확인
+- IsFull
+  - 포화상태인지 확인
+- peek
+  - 앞쪽에서 원소를 삭제하지 않고 반환
+- createQueue
+  - 공백 큐 생성
+## 응용
+- 버퍼
+- 마이쮸우ㅜㅜ우ㅜ우ㅜㅜ
+## 원형큐
+## pop 대신
+from collections import deque 진짜 많이 쓰임 queue.popleft rotate
