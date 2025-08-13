@@ -167,4 +167,59 @@ print(f"후위 표기식: {postfix_expression}")
 result = run_calculator(postfix_expression)
 print(result)
 
+# 큐 구현
+    
 '''
+
+
+class Queue:
+    # 생성자 메서드
+    # 인스턴스가 생성될 때, 무조건 실행되는 메서드
+    # 초기화하는 용도로 사용된다.
+    def __init__(self, capacity=10):
+        self.capacity = capacity
+        self.items = [None] * capacity
+        self.front = -1
+        self.rear = -1
+
+    # 큐가 가득 찼는지 확인하는 메서드
+
+    def is_full(self):
+        return self.rear == self.capacity - 1
+
+    # 큐에 데이터 삽입하는 메서드
+
+    def enqueue(self, item):
+        # 큐가 가득 찼는지부터 확인
+
+        if self.is_full():
+            raise IndexError("Queue is full")
+        self.rear += 1
+        self.items[self.rear] = item
+
+    # queue = []
+
+    # def dequeue():
+    #     if len(queue) == 0:
+    #         print("데이터가 없습니다.")
+    #         return
+    #     return queue.pop(0)
+
+    def is_empty(self):
+        return self.front == self.rear
+
+    def dequeue(self):
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        self.front += 1
+        item = self.items[self.front]
+        self.items[self.front] = None
+        return item
+
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("비어있다")
+        return self.items[self.front + 1]
+
+    def get_size(self):
+        return len(self.items)
