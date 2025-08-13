@@ -180,22 +180,52 @@ v 1 2 3 4 5
 
 '''
 
-T = int(input())
-for tc in range(1, T+1):
-    N, M = list(map(int, input().split()))
-    ai = list(map(int, input().split()))
-    first_num = 0
-    for k in range(M):
-        first_num += ai[k]
-    max_num = first_num
-    min_num = first_num
-    # max_num = 0
-    # min_num = 10000 * M
-    for i in range(N-M+1):
-        sum_num = 0
-        for j in range(M):
-            sum_num += ai[i+j]
-        max_num = max(sum_num, max_num)
-        min_num = min(sum_num, min_num)
-    result = max_num - min_num
-    print(f'#{tc} {result}')
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = list(map(int, input().split()))
+#     ai = list(map(int, input().split()))
+#     first_num = 0
+#     for k in range(M):
+#         first_num += ai[k]
+#     max_num = first_num
+#     min_num = first_num
+#     # max_num = 0
+#     # min_num = 10000 * M
+#     for i in range(N-M+1):
+#         sum_num = 0
+#         for j in range(M):
+#             sum_num += ai[i+j]
+#         max_num = max(sum_num, max_num)
+#         min_num = min(sum_num, min_num)
+#     result = max_num - min_num
+#     print(f'#{tc} {result}')
+#
+# dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+# N = [[2, 1, 1, 2, 2], [2, 2, 1, 2, 2], [2, 2, 1, 1, 2]]
+# # print(dxy[0])
+# # print(dxy[0][0])
+# # for dx, dy in dxy:
+# #     print(dx, end=' ')
+# #     print(dy)
+# print(dxy[3])
+# print(N[0][4])
+N=3
+matrix = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,10]
+]
+
+result = []
+
+# 각 행의 합을 result에 더할건데
+# 조건: 홀수 행만 넣으세요 ( [1,2,3], [7,8,10] ) 행의 합을 넣으세요
+# result => [6, 25 ]
+for i in range(N):
+    line_sum = 0
+    for j in range(N):
+        if i == 1:
+            break
+        line_sum += matrix[i][j]
+    result.append(line_sum)
+print(result)
