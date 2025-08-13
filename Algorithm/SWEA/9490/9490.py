@@ -79,17 +79,43 @@ NxM개의 풍선에 들어있는 종이 꽃가루 개수A가 주어지면,
 #             max_value = max(max_value, temp_sum)
 #
 #     print(f"#{tc} {max_value}")
-dxy = [[1, 0], [-1, 0], [0, -1], [0, 1]]
+# dxy = [[1, 0], [-1, 0], [0, -1], [0, 1]]
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = list(map(int, input().split()))
+#     dust = [list(map(int, input().split())) for _ in range(N)]
+#     max_num = 0
+#     for i in range(N):
+#         for j in range(M):
+#             sum_num = dust[i][j]
+
+dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
 T = int(input())
 for tc in range(1, T+1):
     N, M = list(map(int, input().split()))
-    dust = [list(map(int, input().split())) for _ in range(N)]
-    max_num = 0
-    for i in range(N):
-        for j in range(M):
-            sum_num = dust[i][j]
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    max_value = 0
+    for i in range(N):  # 행
+        for j in range(M):  # 열
+            temp_sum = arr[i][j]  # 본인 꽃가루도 포함하기 떄문에 바로 포함해서 초기화
+            for dx, dy in dxy:
+                # 각 방향으로 한 번만 탐색 X , 몇 번탐색 해야한다 ?? => 꽃가루 개수만큼(arr[i][j])
+                for dist in range(1, arr[i][j] + 1):  # arr[i][j] => 1 일 경우에는, 그대로 dist 1밖에 실행 안된다.
+                    # 델타탐색으로 다음에 이동할 좌표
+                    ni = i + dx * dist
+                    nj = j + dy * dist
 
+                    # 범위를 벗어날 거에요..
+                    # 꽃가루의 누적은 범위 안에 있는 애들한테만 해당한다. .
+                    if 0 <= ni < N and 0 <= nj < M:
+                        temp_sum += arr[ni][nj]
+                    else:  # 범위를 벗어난 경우
+                        break
 
+            max_value = max(max_value, temp_sum)
+
+    print(f"#{tc} {max_value}")
 
 
 
