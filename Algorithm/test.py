@@ -231,41 +231,41 @@ v 1 2 3 4 5
 #         line_sum += matrix[i][j]
 #     result.append(line_sum)
 # print(result)
-dxy = [(-1,0), (1,0), (0,-1), (0,1)]  # 상, 하, 좌, 우
-
-T = int(input())
-for tc in range(1, T+1):
-    N = int(input())
-    grid = [list(map(int, input().split())) for _ in range(N)]
-    high_num = max(map(max, grid))
-    max_path_len = 0
-
-    for i in range(N):
-        for j in range(N):
-            if grid[i][j] == high_num:
-                x, y = i, j
-                path_len = 1
-
-                # 최대 N*N번 반복, 이동 불가 시 break
-                for _ in range(N*N):
-                    cur_height = grid[x][y]
-                    next_x, next_y = -1, -1
-                    next_height = cur_height
-
-                    for dx, dy in dxy:
-                        nx, ny = x + dx, y + dy
-                        if 0 <= nx < N and 0 <= ny < N:
-                            if grid[nx][ny] < next_height:
-                                next_height = grid[nx][ny]
-                                next_x, next_y = nx, ny
-                                break  # 이동할 곳은 유일
-
-                    if next_x == -1:  # 이동할 곳 없으면 종료
-                        break
-
-                    x, y = next_x, next_y
-                    path_len += 1
-
-                max_path_len = max(max_path_len, path_len)
-
-    print(f"#{tc} {max_path_len}")
+# dxy = [(-1,0), (1,0), (0,-1), (0,1)]  # 상, 하, 좌, 우
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     grid = [list(map(int, input().split())) for _ in range(N)]
+#     high_num = max(map(max, grid))
+#     max_path_len = 0
+#
+#     for i in range(N):
+#         for j in range(N):
+#             if grid[i][j] == high_num:
+#                 x, y = i, j
+#                 path_len = 1
+#
+#                 # 최대 N*N번 반복, 이동 불가 시 break
+#                 for _ in range(N*N):
+#                     cur_height = grid[x][y]
+#                     next_x, next_y = -1, -1
+#                     next_height = cur_height
+#
+#                     for dx, dy in dxy:
+#                         nx, ny = x + dx, y + dy
+#                         if 0 <= nx < N and 0 <= ny < N:
+#                             if grid[nx][ny] < next_height:
+#                                 next_height = grid[nx][ny]
+#                                 next_x, next_y = nx, ny
+#                                 break  # 이동할 곳은 유일
+#
+#                     if next_x == -1:  # 이동할 곳 없으면 종료
+#                         break
+#
+#                     x, y = next_x, next_y
+#                     path_len += 1
+#
+#                 max_path_len = max(max_path_len, path_len)
+#
+#     print(f"#{tc} {max_path_len}")

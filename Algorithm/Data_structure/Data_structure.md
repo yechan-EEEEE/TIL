@@ -85,3 +85,11 @@
 ## 원형큐
 ## pop 대신
 from collections import deque 진짜 많이 쓰임 queue.popleft rotate
+
+## 연결 리스트
+# 리스트의 문제점
+- 자료의 삽입/삭제 연산 과정에서 원소들을 이동시키는 작업이 필요하다
+- 원소의 개수가 많고 삽입/삭제 연산이 빈번하게 일어날수록 소요되는 시간이 크다
+## 연결 리스트
+
+#from collections import dequeue     

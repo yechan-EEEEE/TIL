@@ -36,49 +36,6 @@ NxM개의 풍선에 들어있는 종이 꽃가루 개수A가 주어지면,
 
 '''
 
-# dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-#
-# T = int(input())
-# for tc in range(1, T+1):
-#     # N = 행의 개수 , M = 열의 개수
-#     N, M = list(map(int, input().split()))
-#     arr = [list(map(int, input().split())) for _ in range(N)]
-#
-#     # 꽃가루의 합 중에서 최대값이 가장 큰 값을 저장할 변수
-#     max_value = 0
-#
-#     # 모든 풍선을 순회하고, 터트려본다..
-#     for i in range(N):  # 행
-#         for j in range(M):  # 열
-#             # i, j에서 풍선을 터트렸을 때, 발생하는 꽃가루를 저장할 누적 변수를만들어야 함
-#             temp_sum = arr[i][j]  # 본인 꽃가루도 포함하기 떄문에 바로 포함해서 초기화
-#
-#             # 기준점 잡았으니 델타 탐색 시작하자.
-#             # for k in range(4):
-#             #     x = dx[k]
-#             #     y = dy[k]
-#
-#             #        오른쪽   왼쪽     아래      위
-#             # dxy =[[0, 1], [0, -1], [1, 0], [-1, 0]]
-#             # 처음에 for 문 돌때 [0, 1] => [dx, dy]
-#             # dx : 0, dy: 1 => 오른쪽
-#             for dx, dy in dxy:
-#                 # 각 방향으로 한 번만 탐색 X , 몇 번탐색 해야한다 ?? => 꽃가루 개수만큼(arr[i][j])
-#                 for dist in range(1, arr[i][j] + 1):  # arr[i][j] => 1 일 경우에는, 그대로 dist 1밖에 실행 안된다.
-#                     # 델타탐색으로 다음에 이동할 좌표
-#                     ni = i + dx * dist
-#                     nj = j + dy * dist
-#
-#                     # 범위를 벗어날 거에요..
-#                     # 꽃가루의 누적은 범위 안에 있는 애들한테만 해당한다. .
-#                     if 0 <= ni < N and 0 <= j < M:
-#                         temp_sum += arr[ni][nj]
-#                     else:  # 범위를 벗어난 경우
-#                         break
-#
-#             max_value = max(max_value, temp_sum)
-#
-#     print(f"#{tc} {max_value}")
 # dxy = [[1, 0], [-1, 0], [0, -1], [0, 1]]
 # T = int(input())
 # for tc in range(1, T+1):
@@ -89,35 +46,54 @@ NxM개의 풍선에 들어있는 종이 꽃가루 개수A가 주어지면,
 #         for j in range(M):
 #             sum_num = dust[i][j]
 
-dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+# dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = list(map(int, input().split()))
+#     arr = [list(map(int, input().split())) for _ in range(N)]
+#     max_value = 0
+#     for i in range(N):  # 행
+#         for j in range(M):  # 열
+#             temp_sum = arr[i][j]  # 본인 꽃가루도 포함하기 떄문에 바로 포함해서 초기화
+#             for dx, dy in dxy:
+#                 # 각 방향으로 한 번만 탐색 X , 몇 번탐색 해야한다 ?? => 꽃가루 개수만큼(arr[i][j])
+#                 for dist in range(1, arr[i][j] + 1):  # arr[i][j] => 1 일 경우에는, 그대로 dist 1밖에 실행 안된다.
+#                     # 델타탐색으로 다음에 이동할 좌표
+#                     ni = i + dx * dist
+#                     nj = j + dy * dist
+#
+#                     # 범위를 벗어날 거에요..
+#                     # 꽃가루의 누적은 범위 안에 있는 애들한테만 해당한다. .
+#                     if 0 <= ni < N and 0 <= nj < M:
+#                         temp_sum += arr[ni][nj]
+#                     else:  # 범위를 벗어난 경우
+#                         break
+#
+#             max_value = max(max_value, temp_sum)
+#
+#     print(f"#{tc} {max_value}")
 
-T = int(input())
-for tc in range(1, T+1):
-    N, M = list(map(int, input().split()))
-    arr = [list(map(int, input().split())) for _ in range(N)]
-    max_value = 0
-    for i in range(N):  # 행
-        for j in range(M):  # 열
-            temp_sum = arr[i][j]  # 본인 꽃가루도 포함하기 떄문에 바로 포함해서 초기화
-            for dx, dy in dxy:
-                # 각 방향으로 한 번만 탐색 X , 몇 번탐색 해야한다 ?? => 꽃가루 개수만큼(arr[i][j])
-                for dist in range(1, arr[i][j] + 1):  # arr[i][j] => 1 일 경우에는, 그대로 dist 1밖에 실행 안된다.
-                    # 델타탐색으로 다음에 이동할 좌표
-                    ni = i + dx * dist
-                    nj = j + dy * dist
 
-                    # 범위를 벗어날 거에요..
-                    # 꽃가루의 누적은 범위 안에 있는 애들한테만 해당한다. .
-                    if 0 <= ni < N and 0 <= nj < M:
-                        temp_sum += arr[ni][nj]
-                    else:  # 범위를 벗어난 경우
-                        break
-
-            max_value = max(max_value, temp_sum)
-
-    print(f"#{tc} {max_value}")
-
-
+# dxy = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, M = list(map(int, input().split()))
+#     grid = [list(map(int, input().split())) for _ in range(N)]
+#     max_sum = 0  # 터뜨린 최대 값
+#     for i in range(N):  # 행
+#         for j in range(M):  # 열
+#             cur_sum = grid[i][j]  # 현재 더한 값=자기 위치 값도 더해줘야 하니까 이렇게 해두고
+#             for dx, dy in dxy:  # 델타탐색을 시작합니다
+#                 for dist in range(1, grid[i][j]+1):  # 탐색을 반복합니다, 현재 위치 값만큼
+#                     cx = i+dx * dist
+#                     cy = j+dy * dist
+#                     if 0 <= cx < N and 0 <= cy < M:
+#                         cur_sum += grid[cx][cy]
+#                     else:
+#                         break
+#             max_sum = max(max_sum, cur_sum)
+#     print(f'#{tc} {max_sum}')
 
 
 
