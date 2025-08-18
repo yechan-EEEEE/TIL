@@ -59,8 +59,38 @@ for tc in range(1, T+1):
                         cur_room += 1
                     else:
                         break
-            if cur_room == K:
-                max_value += 1
+                if cur_room == K:
+                    max_value += 1
+            for lx, ly in mov_left:  # 이렇게 하면 rx, ry에 0,1이 들어가요
+                for dist_r in range(i, N):  # 반복을 할건데
+                    nxl = i + lx * dist_r
+                    nyl = j + ly * dist_r
+                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
+                        cur_room += 1
+                    else:
+                        break
+                if cur_room == K:
+                    max_value += 1
+            for ux, uy in mov_up:  # 이렇게 하면 rx, ry에 0,1이 들어가요
+                for dist_r in range(i, N):  # 반복을 할건데
+                    nxu = i + ux * dist_r
+                    nyu = j + uy * dist_r
+                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
+                        cur_room += 1
+                    else:
+                        break
+                if cur_room == K:
+                    max_value += 1
+            for dx, dy in mov_down:  # 이렇게 하면 rx, ry에 0,1이 들어가요
+                for dist_r in range(i, N):  # 반복을 할건데
+                    nxd = i + dx * dist_r
+                    nyd = j + dy * dist_r
+                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
+                        cur_room += 1
+                    else:
+                        break
+                if cur_room == K:
+                    max_value += 1
     print(f'#{tc} {max_value}')
 
 
