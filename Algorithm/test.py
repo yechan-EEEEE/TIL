@@ -108,11 +108,9 @@
 #     x, y = nx, ny
 # print(result)
 
-# import sys
-# sys.stdin = open("input.txt","r")
 # T = int(input()) # 테스트케이스 입력
 # for tc in range(1,T+1): # 입력 수 만큼 반복
-#     N, M = list(map(int,input().split())) # 전역 크기와 파리채의 크기
+#     N, M = map(int,input().split()) # 전역 크기와 파리채의 크기
 #     net=[] # 전체 빈칸, 여기에 선언해야 초기화 안됌
 #     for _ in range(N): # 5칸이니까 5번 반복 입력
 #       fly = list(map(int,input().split())) # 파리들 칸마다 수 입력 받고
@@ -128,12 +126,9 @@
 #           max_kill=max(sum_kill,max_kill) # 때리기가 끝날 때마다 최대킬이랑 방금 때린 값 비교해서 큰 값 저장
 #     print(f'#{tc} {max_kill}')
 
-
-# import sys
-# sys.stdin = open("input.txt","r")
 # T = int(input())
 # for tc in range(1,T+1):
-#     N, M = list(map(int,input().split()))
+#     N, M = map(int,input().split()))
 #     net = [list(map(int,input().split())) for _ in range(N)]
 #     # net = []
 #     # for _ in range(N):
