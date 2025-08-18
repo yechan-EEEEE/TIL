@@ -33,3 +33,25 @@ TTXGZYJZXZTIBSDGWQLW        #3 1
 
 '''
 
+T = int(input())
+
+for tc in range(1, T + 1):
+
+    str1 = list(map(str, input().strip()))
+    # print(str1)
+    str2 = list(map(str, input().strip()))
+    # print(str2)
+    N = len(str1)
+    # print(N)
+    M = len(str2)
+    # print(M)
+    max_sum = 0
+
+    for i in range(M-N+1):
+        cur_sum = 0
+        for j in range(N):
+            if str1[j] == str2[i+j]:
+                cur_sum += 1
+                if cur_sum == N:
+                    max_sum += 1
+    print(f'#{tc} {max_sum}')
