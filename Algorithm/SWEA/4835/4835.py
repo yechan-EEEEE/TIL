@@ -18,7 +18,7 @@ v 1 2 3 4 5
 각 줄마다 "#T" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.
 
 입력                                                                                                      출력
-3                       T
+3                       
 10 3                    N이 정수의 개수 M이 이웃한 값들 몇개를 더할 건가
 1 2 3 4 5 6 7 8 9 10                                                                                    #1 21
 10 5
@@ -137,12 +137,12 @@ for test_case in range(1,T+1): # 테스트 케이스 수 만큼 반복하기
         sum_num = 0 # 구간합 변수를 0으로 저장해둠 여기다 둬야 구간합 반복이 끝나고 0으로 초기화됨
         for k in range(j,j+M): # 
             sum_num += input_num[k]
-        if sum_num > max_num:
-            max_num = sum_num
-            # max_num = max(max_num,sum_num) # 맥스는 이렇게 쓰면 좋음 비교 안하고
-        if sum_num < min_num:
-            min_num = sum_num
-            # min_num = min(min_num,sum_num) # min도 이렇게 쓰기 비교 안쓰고
+        # if sum_num > max_num:
+        #     max_num = sum_num
+        max_num = max(max_num,sum_num) # 맥스는 이렇게 쓰면 좋음 비교 안하고
+        # if sum_num < min_num:
+        #     min_num = sum_num
+        min_num = min(min_num,sum_num) # min도 이렇게 쓰기 비교 안쓰고
     result = max_num - min_num
     print(f'#{test_case} {result}', end=" ")
     print()
