@@ -68,19 +68,107 @@ print('#{} {}'.format(tc, find())    #3 0
 #     else:
 #         print(f"{ex} 는 올바르지 않은 괄호")
 
+# T = int(input())
+
+# for tc in range(1, T + 1):
+#     # s = list(map(str, input().strip()))
+#     s = list(input().strip())
+#     sum_num = 0
+#     result = 0
+#     for i in range(0, len(s)):
+#         if s[i] == '(' or s[i] == '{' or s[i] == '[':
+#             sum_num += 1
+#         elif s[i] == ')' or s[i] == '}' or s[i] == ']':
+#             sum_num -= 1
+#     if sum_num == 0:
+#         result = 1
+#     else:
+#         result = 0
+#     print(f'#{tc} {result}')
+
+# T = int(input())
+
+# for tc in range(1, T + 1):
+#     s = list(input().strip())
+#     stack = []
+#     result = 1  # 기본값: 올바르다고 가정
+
+#     # 괄호 짝 정의
+#     pair = {')': '(', '}': '{', ']': '['}
+
+#     for ch in s:
+#         if ch in '({[':  # 여는 괄호면 스택에 push
+#             stack.append(ch)
+#         elif ch in ')}]':  # 닫는 괄호면
+#             if not stack or stack[-1] != pair[ch]:  # 스택이 비었거나 짝이 안 맞으면
+#                 result = 0
+#                 break
+#             stack.pop()  # 짝 맞으면 pop
+    
+#     # 다 돌고 나서 스택이 비어있지 않으면 올바르지 않음
+#     if stack:
+#         result = 0
+
+#     print(f'#{tc} {result}')
+# T = int(input())
+
+# for tc in range(1, T + 1):
+#     sentence = list(input().strip())
+#     stack = []
+#     result = 1  # 올바르다고 가정
+#     match = {')':'(', '}':'{', ']':'['}  # 딕셔너리에 맞는 짝끼리 맺어줌
+
+#     for i in sentence:
+#         if i in '({[':  # 여는 괄호가 들어오면 스택에다 append, 맨 뒤로 들어감
+#             stack.append(i)
+#         elif i in ')}]':  # 닫는 괄호가 들어올 때
+#             if not stack or stack[-1] != match[i]:  # 스택이 비어있거나, 마지막에 들어온 여는 괄호랑 방금 들어온 닫는 괄호의 value가 다르다면
+#                 result = 0  # 올바르지 않은 문장이니 0 하고 탈출
+#                 break
+#             stack.pop()  # 아니라면 마지막에 들어온 여는 괄호 뽑아내기
+
+#     if stack:  # 끝까지 했는데 스택에 값이 남아있으면 올바르지 않으니 0
+#         result = 0
+#     print(f'#{tc} {result}')
+
+
+# T = int(input())
+
+# for tc in range(1, T + 1):
+#     s = list(input().strip())
+#     stack = []
+#     result = 1
+#     match = {')' : '(', '}' : '{', ']' : '['}
+
+#     for i in s:
+#         if i in '({[':
+#             stack.append(i)
+#         elif i in ')}]':
+#             if not stack or stack[-1] != match[i]:
+#                 result = 0
+#                 break
+#             stack.pop()
+#     if stack:
+#         result = 0
+#     print(f'#{tc} {result}')
+
+
 T = int(input())
 
 for tc in range(1, T + 1):
-    s = list(map(str, input().strip()))
-    sum_num = 0
-    result = 0
-    for i in range(0, len(s)):
-        if s[i] == '(' or s[i] == '{' or s[i] == '[':
-            sum_num += 1
-        elif s[i] == ')' or s[i] == '}' or s[i] == ']':
-            sum_num -= 1
-    if sum_num == 0:
-        result = 1
-    else:
+    sentence = list(input().strip())
+    stack = []
+    result = 1
+    match = {')' : '(', '}' : '{', ']' : '['}
+
+    for i in sentence:
+        if i in '({[':
+            stack.append(i)
+        elif i in ')}]':
+            if not stack or stack[-1] != match[i]:
+                result = 0
+                break
+            stack.pop()
+    if stack:
         result = 0
     print(f'#{tc} {result}')
