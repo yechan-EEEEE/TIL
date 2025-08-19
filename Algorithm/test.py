@@ -26,7 +26,7 @@
 #     for j in range(N):
 #         if i == N-1-j:
 #             sub_sum+=matrix[i][j]
-            
+
 # middle_value=matrix[N//2][N//2]
 # total_sum = main_sum + sub_sum - middle_value
 # print(total_sum)
@@ -175,6 +175,7 @@ v 1 2 3 4 5
 
 '''
 
+
 # T = int(input())
 # for tc in range(1, T+1):
 #     N, M = list(map(int, input().split()))
@@ -264,3 +265,66 @@ v 1 2 3 4 5
 #                 max_path_len = max(max_path_len, path_len)
 #
 #     print(f"#{tc} {max_path_len}")
+# T = int(input())
+#
+# for tc in range(1, T + 1):
+#     N = int(input())
+#     portals = list(map(int, input().split()))
+#     visited = [False] * N
+#     pos = 0
+#     cnt = 0
+#
+#     while True:
+#         if pos == N - 1:   # 마지막 방 도착 → 종료
+#             break
+#
+#         cnt += 1
+#         if not visited[pos]:
+#             visited[pos] = True
+#             if pos == 0:        # 0번은 항상 오른쪽
+#                 pos = 1
+#             elif pos == 1:      # 1번은 처음 방문시 무조건 0번
+#                 pos = 0
+#             else:               # 그 외는 (값-1)번 방으로 이동
+#                 pos = portals[pos] - 1
+#         else:
+#             pos += 1            # 재방문 시 오른쪽으로
+#
+#     print(cnt)
+
+# def perm(selected, remain):
+#     if not remain:
+#         print(selected)
+#     else:
+#         for i in range(len(remain)):
+#             select_i = remain[i]
+#             print(i, remain[i])
+#             remain_list = remain[:i] + remain[i + 1:]
+#             print(selected, select_i, selected + [select_i], remain_list)
+#             perm(selected + [select_i], remain_list)
+#
+#
+# perm([], [1, 2, 3])
+
+import math
+for i in range(1, 4):
+    for j in range(1, 4):
+        if j != i:
+            for k in range(1, 4):
+                if k != j and k != i:
+                    print(i, j, k)
+
+
+def perm(selected, remain, cnt):
+    if not remain:
+        print(selected)
+    else:
+        print(f"{'----' * cnt} selected: {selected}, remain: {remain}")
+        for i in range(len(remain)):
+            select_i = remain[i]
+            remain_list = remain[:i] + remain[i + 1:]
+            perm(selected + [select_i], remain_list, cnt + 1)
+
+
+perm([], [1, 2, 3, 4], 1)
+print(math.factorial(4))
