@@ -20,3 +20,31 @@ for tc in range(1, T + 1):
             result.append(''.join(map(str, j[i])))  # result에 저장해둔 돌아간 값들 첫번째 줄부터 띄어쓰기를 빼고 넣어줌
             # print(result)
         print(' '.join(result))  # result에 들어간 값들을 서로 띄어쓰기를 해서 출력
+
+"""
+t = int(input())
+ 
+for testcase in range(0, t):
+    print(f"#{testcase+1}")
+    n = int(input())
+    board = []
+ 
+    for i in range(n):
+        board.append(list(map(int, input().split())))
+ 
+    for i in range(n):
+        for j in range(n-1, -1, -1):
+            print(board[j][i], end="")
+ 
+        print(end = " ")
+ 
+        for j in range(n-1, -1, -1):
+            print(board[n-i-1][j], end="")
+ 
+        print(end=" ")
+ 
+        for j in range(n):
+            print(board[j][n-i-1], end="")
+ 
+        print()
+"""
