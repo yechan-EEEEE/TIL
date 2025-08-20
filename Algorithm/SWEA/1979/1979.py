@@ -39,59 +39,67 @@
 #             if cur_room_l == K:
 #                 max_val += 1
 #     print(f'#{tc} {max_val}')
-mov_right = [[0, 1]]
-mov_left = [0, -1]
-mov_up = [-1, 0]
-mov_down = [1, 0]
+
+# T = int(input())
+# dxy = [[0, 1], [1, 0]]
+
+# for tc in range(1, T + 1):
+#     N, K = map(int, input().split())
+#     grid = [list(map(int, input().split())) for _ in range(N)]
+#     result = 0
+
+#     for i in range(N):
+#         for j in range(N):
+#             empty_cnt = 0
+#             for dx, dy in dxy:
+#                 for k in range(1,N+1):
+#                     nx = i + dx * k
+#                     ny = j + dy * k
+#                     print(f'nx={nx} ny={ny}')
+#                     if 0 <= nx < N and 0 <= ny < N:
+#                         if grid[nx][ny] == 1:
+#                             print(f'grid[nx][ny]={grid[nx][ny]}')
+#                             empty_cnt += 1
+#                             print(empty_cnt)
+#                             if nx <= N-1 and ny <= N-1 and empty_cnt == K:
+#                                 print(empty_cnt, K)
+#                                 result += 1
+#                                 print(result)
+#                                 empty_cnt = 0
+#                         if grid[nx][ny] == 0 and empty_cnt != K:
+#                             empty_cnt = 0
+#     print(f'#{tc} {result}')
 T = int(input())
-for tc in range(1, T+1):
+
+for tc in range(1, T + 1):
     N, K = map(int, input().split())
-    word_puz = [list(map(int, input().split())) for _ in range(N)]
-    max_value = 0  # 최대값
+    grid = [list(map(int, input().split())) for _ in range(N)]
+    result = 0
+
+    # 가로 확인
     for i in range(N):
+        empty_cnt = 0
         for j in range(N):
-            cur_room = 0  # 지금 있는 칸의 크기
-            for rx, ry in mov_right:  # 이렇게 하면 rx, ry에 0,1이 들어가요
-                for dist_r in range(i, N):  # 반복을 할건데
-                    nxr = i + rx * dist_r
-                    nyr = j + ry * dist_r
-                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
-                        cur_room += 1
-                    else:
-                        break
-                if cur_room == K:
-                    max_value += 1
-            for lx, ly in mov_left:  # 이렇게 하면 rx, ry에 0,1이 들어가요
-                for dist_r in range(i, N):  # 반복을 할건데
-                    nxl = i + lx * dist_r
-                    nyl = j + ly * dist_r
-                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
-                        cur_room += 1
-                    else:
-                        break
-                if cur_room == K:
-                    max_value += 1
-            for ux, uy in mov_up:  # 이렇게 하면 rx, ry에 0,1이 들어가요
-                for dist_r in range(i, N):  # 반복을 할건데
-                    nxu = i + ux * dist_r
-                    nyu = j + uy * dist_r
-                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
-                        cur_room += 1
-                    else:
-                        break
-                if cur_room == K:
-                    max_value += 1
-            for dx, dy in mov_down:  # 이렇게 하면 rx, ry에 0,1이 들어가요
-                for dist_r in range(i, N):  # 반복을 할건데
-                    nxd = i + dx * dist_r
-                    nyd = j + dy * dist_r
-                    if 0 <= nxr < N and 0 <= nyr < N and word_puz[nxr][nyr] == 1:  # 움직일 위치가 퍼즐 안이고 값이 1이라면
-                        cur_room += 1
-                    else:
-                        break
-                if cur_room == K:
-                    max_value += 1
-    print(f'#{tc} {max_value}')
+            if grid[i][j] == 1:
+                empty_cnt += 1
+            else:  # 다음 칸이 1이 아닌데
+                if empty_cnt == K:  # 카운트가 K랑 같으면
+                    result += 1
+                empty_cnt = 0  # 카운트 초기화
+        if empty_cnt == K:  # 마지막까지 1이여서 끝까지 갔을 때 카운트가 K면
+            result += 1
 
+    # 세로 확인
+    for j in range(N):
+        empty_cnt = 0
+        for i in range(N):
+            if grid[i][j] == 1:
+                empty_cnt += 1
+            else:
+                if empty_cnt == K:
+                    result += 1
+                empty_cnt = 0
+        if empty_cnt == K:  # 마지막 칸 체크
+            result += 1
 
-
+    print(f'#{tc} {result}')
