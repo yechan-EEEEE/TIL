@@ -328,16 +328,49 @@ v 1 2 3 4 5
 #
 # perm([], [1, 2, 3, 4], 1)
 # print(math.factorial(4))
-def comb(arr, n):
-    result = []
-    if n == 1:
-        return [[i] for i in arr]
-
-    for i in range(len(arr)):
-        elem = arr[i]
-        for rest in comb(arr[i + 1:], n - 1):
-            result.append([elem] + rest)
-    return result
-
-
-print(comb([1, 2, 3, 4], 3))
+# def comb(arr, n):
+#     result = []
+#     if n == 1:
+#         return [[i] for i in arr]
+#
+#     for i in range(len(arr)):
+#         elem = arr[i]
+#         for rest in comb(arr[i + 1:], n - 1):
+#             result.append([elem] + rest)
+#     return result
+#
+#
+# print(comb([1, 2, 3, 4], 3))
+# print(~1)
+# arr = [1, 2, 3]
+# n = len(arr)
+# subset_cnt = 2 ** n
+#
+# subsets = []
+# for i in range(subset_cnt):
+#     subset = []
+#     for j in range(n):
+#         if i & (1 << j):
+#             subset.append(arr[j])
+#     subsets.append(subset)
+#
+# print(subsets)
+print(~5)
+# def sum_subset(depth, num_sum):
+#     global result
+#
+#     if depth == N:
+#         if num_sum == 10:
+#             result += 1
+#         return
+#
+#     if num_sum >= 10:
+#         return
+#
+#     sum_subset(depth + 1, num_sum + arr[depth])
+#
+#     sum_subset(depth + 1, num_sum)
+#
+# N = 10
+# arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# result = 0
