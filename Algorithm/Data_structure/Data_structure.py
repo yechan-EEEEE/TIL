@@ -18,7 +18,7 @@ class Stack:
         self.top += 1
         self.items[self.top] = item
 '''
-# pop
+# pop, peek
 '''
 stack = []
 def pop():
@@ -31,7 +31,7 @@ def pop():
 class Stack:
     def is_empty(self):
         return self.top == -1
-    def pop(self):
+    def pop(self): 
         if self.is_empty():
             raise IndexError("Stack is empty")
         item = self.items[self.top]
@@ -44,6 +44,11 @@ class Stack:
         if self.is_empty():
             raise IndexError("Stack is empty")
         return self.items[self.top]
+'''
+# 2차원 리스트 회전
+'''
+reverse_matrix = list(map(list, zip(*origin_matrix)))  # 90도 회전
+reverse90_matrix = list(zip(*origin_matrix[::-1])))  # 반시계 90도 회전
 '''
 # infix_to_postfix_notation
 # 중위 표기식을 후위 표기식으로 변환하는 함수
@@ -134,8 +139,8 @@ def infix_to_postfix(expression):
         postfix.append(stack.pop())
 
     return ' '.join(postfix)
-
-
+'''
+'''
 # 후위 표기식 계산 함수 
 def run_calculator(expr):
     stack = []
@@ -166,12 +171,10 @@ print(f"후위 표기식: {postfix_expression}")
 
 result = run_calculator(postfix_expression)
 print(result)
-
-# 큐 구현
-    
 '''
 
-
+# 큐 구현
+'''
 class Queue:
     # 생성자 메서드
     # 인스턴스가 생성될 때, 무조건 실행되는 메서드
@@ -198,7 +201,6 @@ class Queue:
         self.items[self.rear] = item
 
     # queue = []
-
     # def dequeue():
     #     if len(queue) == 0:
     #         print("데이터가 없습니다.")
@@ -222,4 +224,65 @@ class Queue:
         return self.items[self.front + 1]
 
     def get_size(self):
-        return len(self.items)
+        return len(self.items) 
+'''
+# 마이쮸
+'''
+total_candy = 20
+
+queue = []
+next_person = 1
+# 누가 받을지(사람 번호), 몇 개 받을지(받을 개수) 가 필요
+queue.append((1, 1))
+last_person = None
+
+# 캔디 나눠주는 로직
+while total_candy > 0:
+    person, cnt = queue.pop(0)
+
+    if total_candy - cnt <= 0:
+        last_person = person
+        break
+
+    total_candy -= cnt
+
+    queue.append((person, cnt + 1))
+
+    next_person += 1
+    queue.append((next_[person], 1))
+
+print(last_person)
+'''
+# 원형 큐
+'''
+class CircularQueue:
+    def __init__(self, capacity=10) :
+        self.capacity = capacity + 1
+        self.items = [None] * self.capacity
+        self.front = 0
+        self.rear = 0
+
+    def is_full(self):
+        return (self.rear + 1) % self.capacity == self.front
+    
+    def enqueue(self, item):
+        if self.is_full():
+            raise IndexError("Queue is full")
+        self.rear = (self.rear + 1) % self.capacity
+        self.items[self.rear] = item
+    
+    def is_empty(self):
+        return self.front == self.rear
+    
+    def dequeue(self):
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        self.front = (self.front + 1) % self.capacity
+        item = self.items[self.front]
+        self.items[self.front] = None
+        return item
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.items[(self.front + 1) % self.capacity]
+'''
