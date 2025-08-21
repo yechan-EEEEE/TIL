@@ -26,6 +26,7 @@
     - s.strip([chars]): 문자열 시작과 끝에 공백 제거 or 지정한 문자 제거
     - s.split(sep=None, maxsplit=-1): sep를 구분자 문자열로 사용해 문자열에 있는 단어들을 리스트로
     - separator.join(iterable): separator(구분자)를 iterable(변수의 값들)사이에다가 넣어서 리스트에다 넣어줌
+        -ex) " ".join(map(str, 변수)) = 여러개 들오는 거 띄어쓰기로 구분해서 문자열로 만들어줌
     - s.capitalize(): 첫 글자를 대문자로 나머지 소문자
     - s.title(): 띄어쓰기 기준으로 각 단어 첫글자 대문자, 나머지는 소문자
     - s.upper(): 모두 대문자로
