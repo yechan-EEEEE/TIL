@@ -16,6 +16,3 @@ for tc in range(1, 11):
 
     result = box_height[-1] - box_height[0]
     print(f'#{tc} {result}')
-
-
-
