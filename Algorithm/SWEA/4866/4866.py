@@ -153,22 +153,79 @@ print('#{} {}'.format(tc, find())    #3 0
 #     print(f'#{tc} {result}')
 
 
+# T = int(input())
+#
+# for tc in range(1, T + 1):
+#     sentence = list(input().strip())
+#     stack = []
+#     result = 1
+#     match = {')' : '(', '}' : '{', ']' : '['}
+#
+#     for i in sentence:
+#         if i in '({[':
+#             stack.append(i)
+#         elif i in ')}]':
+#             if not stack or stack[-1] != match[i]:
+#                 result = 0
+#                 break
+#             stack.pop()
+#     if stack:
+#         result = 0
+#     print(f'#{tc} {result}')
+
+# T = int(input())
+#
+# for tc in range(1, T + 1):
+#     input_text = list(input().strip())
+#     stack = []
+#     result = 1
+#     match_dict = {')': '(', '}': '{', ']': '['}
+#     for i in input_text:
+#         if i in '({[':
+#             stack.append(i)
+#         elif i in ')}]':
+#             if not stack or stack[-1] != match_dict[i]:
+#                 result = 0
+#                 break
+#             stack.pop()
+#     if stack:
+#         result = 0
+#     print(f'#{tc} {result}')
+
 T = int(input())
 
 for tc in range(1, T + 1):
-    sentence = list(input().strip())
+    input_text = list(input().strip())
     stack = []
     result = 1
-    match = {')' : '(', '}' : '{', ']' : '['}
+    match_dict = {')': '(', '}': '{', ']': '['}
 
-    for i in sentence:
+    for i in input_text:
         if i in '({[':
             stack.append(i)
         elif i in ')}]':
-            if not stack or stack[-1] != match[i]:
+            if not stack or stack[-1] != match_dict[i]:
                 result = 0
                 break
             stack.pop()
     if stack:
         result = 0
     print(f'#{tc} {result}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
