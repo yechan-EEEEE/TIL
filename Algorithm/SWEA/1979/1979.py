@@ -69,37 +69,115 @@
 #                         if grid[nx][ny] == 0 and empty_cnt != K:
 #                             empty_cnt = 0
 #     print(f'#{tc} {result}')
+# T = int(input())
+#
+# for tc in range(1, T + 1):
+#     N, K = map(int, input().split())
+#     grid = [list(map(int, input().split())) for _ in range(N)]
+#     result = 0
+#
+#     # 가로 확인
+#     for i in range(N):
+#         empty_cnt = 0
+#         for j in range(N):
+#             if grid[i][j] == 1:
+#                 empty_cnt += 1
+#             else:  # 다음 칸이 1이 아닌데
+#                 if empty_cnt == K:  # 카운트가 K랑 같으면
+#                     result += 1
+#                 empty_cnt = 0  # 카운트 초기화
+#         if empty_cnt == K:  # 마지막까지 1이여서 끝까지 갔을 때 카운트가 K면
+#             result += 1
+#
+#     # 세로 확인
+#     for j in range(N):
+#         empty_cnt = 0
+#         for i in range(N):
+#             if grid[i][j] == 1:
+#                 empty_cnt += 1
+#             else:
+#                 if empty_cnt == K:
+#                     result += 1
+#                 empty_cnt = 0
+#         if empty_cnt == K:  # 마지막 칸 체크
+#             result += 1
+#
+#     print(f'#{tc} {result}')
+
+
 T = int(input())
 
 for tc in range(1, T + 1):
     N, K = map(int, input().split())
-    grid = [list(map(int, input().split())) for _ in range(N)]
+    puzzle = [list(map(int, input().split())) for _ in range(N)]
     result = 0
 
-    # 가로 확인
     for i in range(N):
-        empty_cnt = 0
+        cnt = 0
         for j in range(N):
-            if grid[i][j] == 1:
-                empty_cnt += 1
-            else:  # 다음 칸이 1이 아닌데
-                if empty_cnt == K:  # 카운트가 K랑 같으면
+            # print(i, j)
+            if puzzle[i][j] == 1:
+                cnt += 1
+                # print(cnt)
+            elif puzzle[i][j] == 0:
+                if cnt == K:
                     result += 1
-                empty_cnt = 0  # 카운트 초기화
-        if empty_cnt == K:  # 마지막까지 1이여서 끝까지 갔을 때 카운트가 K면
+                # print(cnt)
+                cnt = 0
+        if cnt == K:
             result += 1
+            # print(result)
 
-    # 세로 확인
-    for j in range(N):
-        empty_cnt = 0
-        for i in range(N):
-            if grid[i][j] == 1:
-                empty_cnt += 1
-            else:
-                if empty_cnt == K:
+    for i in range(N):
+        cnt = 0
+        for j in range(N):
+            # print(i, j)
+            if puzzle[j][i] == 1:
+                cnt += 1
+                # print(cnt)
+            elif puzzle[j][i] == 0:
+                if cnt == K:
                     result += 1
-                empty_cnt = 0
-        if empty_cnt == K:  # 마지막 칸 체크
+                # print(cnt)
+                cnt = 0
+        if cnt == K:
             result += 1
+            # print(result)
 
     print(f'#{tc} {result}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
