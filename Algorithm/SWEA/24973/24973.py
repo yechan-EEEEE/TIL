@@ -34,43 +34,43 @@ N x N 크기의 2차원 지도 정보가 주어집니다. 각 칸에는 해당 �
 27 26 13 14 32
                           #3 5
 """
-dxy = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-T = int(input())
-for tc in range(1, T+1):
-    N = int(input())
-    grid = [list(map(int, input().split())) for _ in range(N)]
-    # print(grid)
-    high_num = 0  # 가장 높은 곳의 값
-    start_x = 0  # 가장 높은 곳의 위치
-    start_y = 0
-    for x in range(N):  # 최고값 찾기
-        for y in range(N):
-            if grid[x][y] > high_num:
-                high_num = grid[x][y]
-                start_x = x
-                start_y = y
-    
-    cur_num = high_num  # 현재 위치 값을 최고 위치로 설정
-    max_mov = 0  # 최대 이동 값
-    for i in range(N):  # 순회 시작
-        for j in range(N):
-            if grid[i][j] == high_num:  # 그 칸이 가장 높은 곳이면 이동시작
-                for dx, dy in dxy:
-                    # print(dx, dy)
-                    mov_num = 0
-                    # print(grid[i+dx][j+dy])
-                    if 0 <= i+dx < N and 0 <= i+dy < N:  # 움직일 위치가 범위 밖으로 나가지 않으면 이동
-                        # print(grid[i+dx][j+dy])
-                        # print(cur_num)
-                        for k in range(N):  # cur_num 이 주변 값들보다 제일 작을 때까지반복 을 못하겠네요
-                            if [i+dx][j+dy] < cur_num:  # 움직일 곳의 값이 지금 위치값보다 작으면 이동
-                                cur_num = grid[i+dx][j+dy]  # 이동 했으면 현재 위치를 그 값으로 바꿈
-                                print(cur_num)
-                                mov_num += 1  # 이동 했으니까 이동값에 1 더하기
-                                max_mov = max(max_mov, mov_num)  # 2개 비교해서 더 큰 값 max 에 넣기(같은 값 2개면 비교해야 하니까)
-                # print(max_mov)
-    result = max_mov+1
-    print(f'#{tc} {result}')
+# dxy = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = int(input())
+#     grid = [list(map(int, input().split())) for _ in range(N)]
+#     # print(grid)
+#     high_num = 0  # 가장 높은 곳의 값
+#     start_x = 0  # 가장 높은 곳의 위치
+#     start_y = 0
+#     for x in range(N):  # 최고값 찾기
+#         for y in range(N):
+#             if grid[x][y] > high_num:
+#                 high_num = grid[x][y]
+#                 start_x = x
+#                 start_y = y
+#
+#     cur_num = high_num  # 현재 위치 값을 최고 위치로 설정
+#     max_mov = 0  # 최대 이동 값
+#     for i in range(N):  # 순회 시작
+#         for j in range(N):
+#             if grid[i][j] == high_num:  # 그 칸이 가장 높은 곳이면 이동시작
+#                 for dx, dy in dxy:
+#                     # print(dx, dy)
+#                     mov_num = 0
+#                     # print(grid[i+dx][j+dy])
+#                     if 0 <= i+dx < N and 0 <= i+dy < N:  # 움직일 위치가 범위 밖으로 나가지 않으면 이동
+#                         # print(grid[i+dx][j+dy])
+#                         # print(cur_num)
+#                         for k in range(N):  # cur_num 이 주변 값들보다 제일 작을 때까지반복 을 못하겠네요
+#                             if [i+dx][j+dy] < cur_num:  # 움직일 곳의 값이 지금 위치값보다 작으면 이동
+#                                 cur_num = grid[i+dx][j+dy]  # 이동 했으면 현재 위치를 그 값으로 바꿈
+#                                 print(cur_num)
+#                                 mov_num += 1  # 이동 했으니까 이동값에 1 더하기
+#                                 max_mov = max(max_mov, mov_num)  # 2개 비교해서 더 큰 값 max 에 넣기(같은 값 2개면 비교해야 하니까)
+#                 # print(max_mov)
+#     result = max_mov+1
+#     print(f'#{tc} {result}')
 # dxy = [(-1,0), (1,0), (0,-1), (0,1)]
 # T = int(input())
 # for tc in range(1, T+1):
@@ -108,3 +108,70 @@ for tc in range(1, T+1):
 #                 max_path_len = max(max_path_len, path_len)
 
 #     print(f"#{tc} {max_path_len}")
+
+T = int(input())
+
+dxy = [[1, 0], [-1, 0], [0, -1], [0, 1]]
+for tc in range(1, T + 1):
+    N = int(input())
+    map_height = [list(map(int, input().split())) for _ in range(N)]
+    highest_height = 0
+    mov_cnt = 1
+
+    for x in range(N):
+        for y in range(N):
+            if map_height[x][y] > highest_height:
+                highest_height = map_height[x][y]
+
+    for i in range(N):
+        for j in range(N):
+            if map_height[i][j] == highest_height:
+                for dist in range(N * N):
+                    for dx, dy in dxy:
+                        nx = i + dx
+                        ny = j + dy
+                        next_point = map_height[nx][ny]
+                        if next_point < map_height[nx][ny]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
