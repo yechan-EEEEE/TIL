@@ -108,3 +108,46 @@ for tc in range(1, T+1):
 #                 max_path_len = max(max_path_len, path_len)
 
 #     print(f"#{tc} {max_path_len}")
+dxy = [(-1,0), (1,0), (0,-1), (0,1)]
+
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    grid = [list(map(int, input().split())) for _ in range(N)]
+
+    # 시작 위치 찾기 (가장 높은 칸)
+    high_num = max(map(max, grid))
+    start = None
+    for i in range(N):
+        for j in range(N):
+            if grid[i][j] == high_num:
+                start = (i, j)
+                break
+        if start:
+            break
+
+    x, y = start
+    path_len = 1  # 시작점 포함
+
+    # 탐험 진행
+    while True:
+        cur_height = grid[x][y]
+        next_x, next_y = -1, -1
+        next_height = cur_height
+
+        for dx, dy in dxy:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < N and 0 <= ny < N:
+                if grid[nx][ny] < next_height:
+                    next_height = grid[nx][ny]
+                    next_x, next_y = nx, ny
+
+        if next_x == -1:  # 이동 불가
+            break
+
+        x, y = next_x, next_y
+        path_len += 1
+
+    print(f"#{tc} {path_len}")
+
+
