@@ -41,3 +41,5 @@ prompt로 하는 AI랑 놀기 쪼꼼 재밌음
 [설명_페이지](https://married-spot-253.notion.site/with-Copilot-2303cb37136a80d9ab17c275dd65eb1b)
 
 Oauth
+unit test
+MCP(Model Context Protocol)
