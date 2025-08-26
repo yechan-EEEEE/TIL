@@ -15,6 +15,7 @@ Markup Language: 태그 등을 이용해 문서나 데이터의 구조를 명시
 - 인간이 읽고 쓰기 쉬운 형태, 데이터의 구조와 의미를 정의하는 데 집중
 ex) HTML, Markdown
 ```
+---
 ### HTML 구조
 ```bash
 <!DOCTYPE html>: 해당 문서가 html로 작성된 문서라는 것을 나타냄
@@ -26,15 +27,19 @@ ex) HTML, Markdown
 <a></a>: Anchor 다른 페이지로 이동시키는 하이퍼링크 태그
 <img alt>: image src에 지정된 그림을 보여주는 태그 (alt는 이미지가 깨졌을 때 표기할 내용)
 ```
+---
 ### HTML Elements (요소)
 하나의 요소는 **여는 태그, 닫는 태그, 내용**으로 구성됨  
 닫는 태그는 태그 이름 앞에 /슬래시가 포함(닫는 태그가 없는 태그도 존재)
+
+---
 ### HTML Attributes (속성)
 사용자가 원하는 기준에 맞도록 요소를 설정하거나 요소의 동작을 조절하기 위한 값  
 목적:
 - 페이지에 나타내고 싶진 않지만 추가적인 기능, 내용을 담고 싶을 때 사용
 - CSS에서 스타일 적용을 위해 해당 요소를 선택하기 위한 값으로 활용  
 ![작성규칙](img/HTML속성.jpg)
+---
 ### HTML Text Structure
 HTML의 주요 목적 중 하나는 텍스트 구조와 의미를 제공하는 것  
 ex) h1태그는 단순히 텍스트 크기가 아닌 현재 문서의 최상위 제목이라는 의미
@@ -43,6 +48,7 @@ Heading & Paragraphs: h1~6, p
 Lists: ol, ul, li
 Emphasis & Importance: em, strong
 ```
+---
 ## CSS
 Cascading Style Sheet: 웹 페이지의 디자인과 레이아웃을 구성하는 언어  
 CSS 적용 방법
@@ -50,6 +56,7 @@ CSS 적용 방법
 2. 내부(Internal) 스타일 시트: head 태그 안에 style태그에 작성
 3. 외부(External) 스타일 시트: 별도의 CSS 파일 생성 후 link 태그로 불러오기
 ![우선순위](img/스타일적용우선순위.jpg)
+---
 ### CSS 기본 구조와 문법
 ```bash
 선택자(Selector): 누구를 꾸밀지 지정하는 부분
@@ -58,6 +65,8 @@ CSS 적용 방법
 값(Value): 속성에 적용할 구체적인 설정
 ```
 ![구조예시](img/CSS기본구조.jpg)
+
+---
 #### CSS Selectors(선택자)
 HTML 요소를 선택하여 스타일을 적용할 수 있도록 하는 선택자  
 ```bash
@@ -68,11 +77,14 @@ HTML 요소를 선택하여 스타일을 적용할 수 있도록 하는 선택�
 - 속성 선택자('[]'): 주어진 속성이나 속성값을 가진 모든 요소 선택, 다양한 조건으로 요소를 정교하게 선택 가능
 ```
 ![선택자 예시](img/선택자예시.jpg)
+
+---
 #### CSS 결합자(Combinators)
 ```bash
 - 자손 결합자( ): 첫 번째 요소의 자손 요소들 선택 ex) p span = <p> 안에 있는 모든 <span> 선택
 - 자식 결합자(>): 첫 번째 요소의 직계 자식만 선택 ex) ul > li = <ul> 안에 있는 한 단계 아래의 모든 <li>를 선택
 ```
+---
 #### CSS Declaration(선언)
 선택된 요소에 적용할 스타일을 구체적으로 명시하는 부분  
 ```bash
@@ -85,6 +97,8 @@ CSS 선언의 목적
 값(Value): 속성에 적용될 구체적인 설정(값의 종류도 정해져 있음), 0일 때는 생략  
 ![값의단위](img/값의단위.jpg)
 ![단위비교정리](img/단위비교정리.jpg)
+
+---
 #### 명시도
 요소에 적용할 CSS 선언을 결정하기 위한 알고리즘  
 **Cascading** Style Sheet: 한 요소에 동인한 가중치의 선택자가 적용되면 계단식으로 마지막 선언 사용
@@ -93,11 +107,13 @@ CSS 선언의 목적
 !important > Inline 스타일 > 선택자(id > class > 요소) > 소스 코드 선언 순서
 important는 다른 구조를 무시하고 강제 적용이므로 지양한다
 ```
+---
 #### 상속
 기본적으로 CSS는 부모 요소의 속성을 자식에게 상속해 재사용성을 높임  
 - 상속 O: text 관련 요소(font, color, text-align), opacity, visibility 등
 - 상속 X: Box model 관련 요소(iwdth, height, border ..), position 관련 요소(position, top/right/bottom/left) 등  
 MDN에서 상속 확인 가능
+---
 #### CSS Box Model
 웹 페이지의 모든 HTML 요소를 감싸는 사각형 상자 / 요소의 크기, 배치, 간격을 결정하는 규칙  
 ```bash
@@ -110,3 +126,91 @@ margin, padding : 상 우 하 좌 / 상 좌우 하 / 상하 좌우 / 공통
 ```
 표준 상자 모델에선 width height 속성 값을 설정하면 내용(content) 박스의 크기가 조정됨  
 *{box-sizing: border-box;} = 원하는 대로 상자 크기가 조절됨
+
+---
+박스 표시(Display) 타입: 박스 타입에 따라 페이지에서의 배치 흐름, 다른 박스와 관련해 동작 방식이 달라짐
+1. Outer display 타입
+    - block 타입
+    - inline 타입
+2. Inner display 타입
+    - 박스 내부의 요소들이 어떻게 배치될지를 결정
+    - CSS Flexbox(속성: flex)
+
+---
+1. Block 타입: 하나의 독립된 덩어리처럼 동작하는 요소  
+각 책의 문단처럼 다른 문단이 옆에 끼어들 수 없어서 웹 페이지의 큰 구조와 단락을 만드는데 사용
+- 항상 새로운 행으로 나뉨 (한 줄 전체를 차지, 너비 100%)
+- width, height, margin, padding 속성 모두 사용 가능
+- padding, margin, border로 다른 요소를 상자로부터 밀어냄
+- width 속성을 지정하지 않으면 박스는 inline 방향으로 사용 가능한 공간을 모두 차지함
+- 대표적인 block 타입: h1~6, p, div, ul, li  
+div: 다른 HTML 요소들을 그룹화하여 레이아웃을 구성하거나 스타일링을 적용  
+헤더, 푸터, 사이드바 등 웹 페이지의 **다양한 섹션을 구조화하는데** 가장 많이 쓰임
+---
+2. Inline 타입: 문장 안의 단어처럼 흐름에 따라 자연스럽게 배치되는 요소  
+단어에 칠한 형광펜처럼 줄을 바꾸지 않고, 텍스트의 일부에 다른 스타일을 적용할 때 사용
+- 줄바꿈이 일어나지 않음(콘텐츠의 크기만큼만 영역을 차지)
+- width와 height 속성을 사용할 수 없음
+- 수직 방향(상하): padding, margin, border 각 적용되지만, 다른 요소를 밀 수는 없음
+- 수평 방향(좌우): padding, margin, border로 다른 요소를 밀 수 있음
+- 대표적인 Inline 타입: a, img, span, strong  
+span: 자체적으로 시각적 변화 없음(스타일을 적용하기 전까지는 특별한 변화 X)  
+텍스트 일부 조작(문장 내 특정 단어나 구문에만 스타일을 적용할 때 유용)  
+블록 요소처럼 줄바꿈을 일으키지 않아서, 구조에 큰 변화를 주지 않음
+---
+#### Normal flow
+일반적인 흐름, 레이아웃을 변경하지 않은 경우 웹 페이지 요소가 배치되는 방식  
+워드 문서를 예로 들면, 엔터를 눌러 문단을 나누는 것이 block, 계속 타이핑을 하는 것이 inline 배치 방식
+
+---
+### CSS Position
+Css Layout:
+- 각 요소의 위치와 크기를 조정해 웹 페이지의 디자인을 결정
+- 요소들을 상하좌우로 정렬하고, 간격을 맞추고, 전체적인 뼈대를 구성
+- 핵심 속성: display(block, inline, flex, grid ...)  
+---
+Css position:
+- 요소를 Noraml Flow에서 제거해 다른 위치로 배치
+- 다른 요소 위에 올리기, 화면 특정 위치에 고정시키기 등
+- 핵심 속성: position(static, relative, absolute, fixed, sticky ...)
+- 이동 방향: 상, 하, 좌, 우를 이용해 위치를 조절할 수 있고, Z축을 이용해 쌓이는 순서도 조절할 수 있음
+---
+#### Position 유형
+1. static:
+    - Normal flow에 따라 배치
+    - 기본 값(top, right, bottom, left 적용X)
+2. relative:
+    - Normal flow에 따라 배치
+    - (top, right, bottom, left)로 자신의 원래 위치를 기준으로 이동
+    - 다른 요소의 레이아웃에 영향을 주지 않음(요소가 차지하는 공간은 static과 같음)
+3. absolute:
+    - Normal flow에서 제거
+    - (top, right, bottom, left)로 가장 가까운 relative 부모 요소를 기준으로 이동(없다면 body 태그가 기준)
+    - 문서에서 요소가 차지하는 공간이 없어짐
+4. fixed:
+    - Normal flow에서 제거
+    - (top, right, bottom, left)로 현재 화면영역(viewport)을 기준으로 이동
+    - 스크롤해도 항상 같은 위치에 유지됨
+    - 문서에서 요소가 차지하는 공간이 없어짐
+5. sticky:
+    - relative와 fixed를 결합한 속성
+    - relative처럼 동작하다가 스크롤 위치가 임계점에 도달하면 fixed처럼 화면에 고정
+    - 다음 sticky가 나오면 이전 sticky 자리를 대체
+6. z-index:
+    - 요소의 쌓임 순서를 정의하는 속성
+    - 정수 값이 클 수록 위에 쌓임
+    - static이 아닌 요소에만 적용
+    - 기본값은 auto로 부모 요소의 값에 영향을 받음
+    - 같은 부모 내에서만 값을 비교하고, 값이 같으면 HTML 문서 순서대로 쌓임
+    - 부모의 값이 낮으면 자식의 값이 아무리 높아도 부모보다 올라갈 수 없음
+---
+#### CSS Flexbox
+요소를 행과 열 형태로 배치하는 1차원 레이아웃 방식
+#### 기타 display 속성
+1. inline-block: 두가지 특징을 모두 가진 특별한 display 속성  
+'줄 서 있는 사람들' 처럼 한 줄로 서있지만(inline) 각자 공간을 가지고 있다(block)
+- 줄바꿈 없이 크기 지정 가능
+- width, height 속성 사용 가능
+- padding, margin, border로 다른 요소를 밀 수 있음
+2. none: 요소를 화면에 표시하지 않고, 공간조차 부여되지 않음(후보 선수)
+---
