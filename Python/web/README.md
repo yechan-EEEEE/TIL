@@ -293,4 +293,15 @@ Css position:
 ---
 ##### 참고
 Margin collapsing(마진 상쇄): 두 block 타입의 top과 바텀이 만나면 더 큰 margin으로 결합  
-박스 타입별 수평 정렬: 02-boxmodel > 99-horizontal-align 코드 참고  
+박스 타입별 수평 정렬: 02-boxmodel > 99-horizontal-align 코드 참고
+
+---
+### Bootstrap
+CSS 프론트엔드 프레임워크 (Toolkit): 미리 만들어진 다양한 디자인 요소들을 제공하여 웹 사이트를 빠르고 쉽게 개발할 수 있도록 함
+
+---
+#### CDN
+    - 서버와 사용자 사이의 물리적인 거리를 줄여 콘텐츠 로딩에 소요되는 시간을 최소화: 웹페이지 로드 속도를 높임
+    - 지리적으로 사용자와 가까운 CDN 서버에 콘텐츠를 저장해서 사용자에게 전달
+#### Bootstrap 기본 사용법
+    - Bootstrap에는 특정한 규칙이 있는 클래스 이름으로 스타일 및 레이아웃이 미리 작성되어 있음
