@@ -303,5 +303,63 @@ CSS 프론트엔드 프레임워크 (Toolkit): 미리 만들어진 다양한 디
 #### CDN
     - 서버와 사용자 사이의 물리적인 거리를 줄여 콘텐츠 로딩에 소요되는 시간을 최소화: 웹페이지 로드 속도를 높임
     - 지리적으로 사용자와 가까운 CDN 서버에 콘텐츠를 저장해서 사용자에게 전달
+---
 #### Bootstrap 기본 사용법
-    - Bootstrap에는 특정한 규칙이 있는 클래스 이름으로 스타일 및 레이아웃이 미리 작성되어 있음
+- Bootstrap에는 특정한 규칙이 있는 클래스 이름으로 스타일 및 레이아웃이 미리 작성되어 있음  
+![1](img/spacing.jpg)
+![1](img/spacing_rule.jpg)
+---
+#### Reser CSS
+모든 HTML 요소 스타일을 일관된 기준으로 재설정하는 간결하고 압축된 규칙 시트
+- Reset CSS 사용 배경:  
+    - 모든 브라우저는 각자의 'user agent stylesheet'를 가지고 있음
+    - 브라우저마다 설정이 달라서 동일하게 보이게 만들기 힘들어서 사용 시작
+- User-agent stylesheets: 모든 문서에 기본 스타일을 제공하는 시트
+Normalize CSS:
+- Reset CSS의 대표적인 방법(Bootstrap이 사용)
+- 웹 표준 기준으로 브라우저 중 하나가 불일치하면 차이가 있는 브라우저를 수정하는 방법
+---
+#### Typography
+제목, 본문 텍스트, 목록 등
+- Display headings: 기존 Heading보다 더 눈에 띄는 제목이 필요한 경우(class="display-1")
+- Inline text elements: HTML inline 요소에 대한 스타일
+![1](img/text_elements.jpg)
+- Lists: HTML list 요소에 대한 스타일
+---
+#### Colors
+- Bootstrap이 지정하고 제공하는 색상 시스템
+- 의미론적 관점의 색상을 적용할 수 있게 해줌(red 대신 danger 등)
+![1](img/colors_ex.jpg)
+---
+#### Component
+UI 관련 요소(버튼, 네비게이션 바, 카드, 폼, 드롭다운 등)
+- 이점: 일관된 디자인을 제공해 웹 사이트 구성 요소를 구축하는데 유용함
+![1](img/TIP_Component.jpg)
+---
+### Semantic Web
+웹 데이터를 의미론적으로 구조화된 형태로 표현하는 방식(시각적 측면이 아닌 목적과 역할에 집중하는 방식) ex)h1은 최상위 제목이다
+
+---
+#### HTML Semantic Element
+기본적인 모양과 기능 이외의 의미를 가지는 HTML 요소  
+검색엔진 및 개발자가 웹 페이지의 콘텐츠를 이해하기 쉽게 해준다
+- header: 소개 및 탐색에 도움을 주는 콘텐츠
+- nav: 현재 페이지 내, 또는 다른 페이지로의 링크를 보여주는 구획
+- main: 문서의 주요 콘텐츠
+- article: 독립적으로 구분해 배포하거나 재사용될 수 있는 구성의 콘텐츠 구획
+- section: 문서의 독립적인 구획, 더 작합한 요소가 없을 때 사용
+- aside: 문서의 주요 내용과 간접적으로만 연관된 부분
+- footer: 가장 가까운 조상 구획(main, article 등)의 작성자, 저작권 정보, 관련 문서
+![1](img/HTML_Sementic_Elements.jpg)
+---
+#### Semantic in CSS
+CSS 방법론: CSS를 효율적이고 유지 보수가 용이하게 작성하기 위한 일련의 가이드라인  
+OOCSS(Object Oriented CSS): 객체 지향적 접근법을 적용해 CSS를 구성하는 방법론
+1. 구조와 스킨을 분리: 재사용 가능성을 높임
+    - .blue-button, .red-button > .button, .button-blue, .button-red
+    ![1](img/OOCSS_structure.jpg)
+2. 컨테이너와 콘텐츠를 분리
+    - 객체에 직접 적용하는 대신 객체를 둘러싼 컨테이너에 스타일 적용
+    - 스타일을 정의할 때 위치에 의존적인 스타일 사용하지 않도록 함
+    - 콘텐츠를 다른 컨테이너로 이동시키거나 재배치할 때 스타일이 깨지는 것을 방지
+    ![1](img/OOCSS_container.jpg)
