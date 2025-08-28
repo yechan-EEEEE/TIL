@@ -355,7 +355,7 @@ v 1 2 3 4 5
 #     subsets.append(subset)
 #
 # print(subsets)
-print(~5)
+# print(~5)
 # def sum_subset(depth, num_sum):
 #     global result
 #
@@ -374,3 +374,12 @@ print(~5)
 # N = 10
 # arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # result = 0
+import itertools
+arr = [1, 2, 1, 2]
+# print(tuple(itertools.permutations(arr)))
+# print(tuple(itertools.combinations(arr, 3)))
+# print(tuple(itertools.product(arr, repeat=1)))
+# print(tuple(itertools.product(arr, repeat=2)))
+# print(tuple(itertools.product(arr, repeat=3)))
+# print(tuple(itertools.combinations_with_replacement(arr, 3)))
+
