@@ -309,7 +309,7 @@ CSS 프론트엔드 프레임워크 (Toolkit): 미리 만들어진 다양한 디
 ![1](img/spacing.jpg)
 ![1](img/spacing_rule.jpg)
 ---
-#### Reser CSS
+#### Reset CSS
 모든 HTML 요소 스타일을 일관된 기준으로 재설정하는 간결하고 압축된 규칙 시트
 - Reset CSS 사용 배경:  
     - 모든 브라우저는 각자의 'user agent stylesheet'를 가지고 있음
@@ -335,6 +335,34 @@ Normalize CSS:
 UI 관련 요소(버튼, 네비게이션 바, 카드, 폼, 드롭다운 등)
 - 이점: 일관된 디자인을 제공해 웹 사이트 구성 요소를 구축하는데 유용함
 ![1](img/TIP_Component.jpg)
+---
+#### Grid system
+웹페이지의 레이아웃(각 요소의 위치와 크기를 조정해 웹페이지의 디자인을 결정하는 것)을 조정하는 데 사용되는 12개의 컬럼으로 구성된 시스템
+```bash
+반응형 디자인을 지원해 웹 페이지를 모바일, 태블릿, 데스크탑 등 다양한 기기에서 적절하게 표시할 수 있도록 도와줍니다.
+```
+
+---
+##### Grid system 기본 요소
+1. Container: Column들을 담고 있는 공간
+2. Column: 실제 컨텐츠를 포함하는 부분
+3. Gutter: 컬럼과 컬럼 사이의 여백 영역(상하좌우)
+4. row(행): 1개의 row 안에 12개의 column 영역이 구성
+```bash
+- 중첩(Nesting): column안에 또 다른 row 삽입 가능
+- 상쇄(Offset): Offset으로 Column을 생략하고 뛰어넘기 가능
+- gutters : x축은 padding, y축은 margin 으로 여백 생성
+```
+---
+##### Respomsive Web Design(반응형 웹 디자인)
+디바이스 종류나 화면 크기에 상관없이, 어디서든 일관된 레이아웃 및 사용자 경험을 제공하는 디자인 기술  
+Bootstrap grid system은 12개의 column과 6개의 breakpoints를 사용해 반응형 웹 디자인을 구현
+
+---
+##### Grid system breakpoints
+웹 페이지를 다양한 화면 크기에서 적절하게 배치하기 위한 분기점(xs, sm, md, lg, xl, xxl 6개)
+![1](img/breakpoints_size.jpg)
+
 ---
 ### Semantic Web
 웹 데이터를 의미론적으로 구조화된 형태로 표현하는 방식(시각적 측면이 아닌 목적과 역할에 집중하는 방식) ex)h1은 최상위 제목이다
