@@ -1,36 +1,3 @@
-# n = 3
-# m = 4
-# list_1=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-# 행 우선 순회
-# for i in range(n):
-#     for j in range(m):
-#         print(list_1[i][j], end=" ")
-#     print()
-
-# 열 우선 순회
-# for j in range(m):
-#     for i in range(n):
-#         print(list_1[i][j], end=" ")
-#     print()
-
-# N = 5
-# matrix = [list(map(int,input().split()))for _ in range(N)]
-# total_sum=0
-# main_sum=0
-# for i in range(N):
-#   for j in range(N):
-#     if i==j:
-#       main_sum += matrix[i][j]
-# sub_sum=0
-# for i in range(N):
-#     for j in range(N):
-#         if i == N-1-j:
-#             sub_sum+=matrix[i][j]
-
-# middle_value=matrix[N//2][N//2]
-# total_sum = main_sum + sub_sum - middle_value
-# print(total_sum)
-
 # N=5
 # matrix = [
 #     [1,  2,  3,  4,  5],
@@ -315,7 +282,7 @@ v 1 2 3 4 5
 #                     print(i, j, k)
 #
 #
-# def perm(selected, remain, cnt):
+# def perm(`sele`cted, remain, cnt):
 #     if not remain:
 #         print(selected)
 #     else:
@@ -341,11 +308,10 @@ v 1 2 3 4 5
 #
 #
 # print(comb([1, 2, 3, 4], 3))
-# print(~1)
 # arr = [1, 2, 3]
 # n = len(arr)
 # subset_cnt = 2 ** n
-#
+
 # subsets = []
 # for i in range(subset_cnt):
 #     subset = []
@@ -353,7 +319,7 @@ v 1 2 3 4 5
 #         if i & (1 << j):
 #             subset.append(arr[j])
 #     subsets.append(subset)
-#
+
 # print(subsets)
 # print(~5)
 # def sum_subset(depth, num_sum):
@@ -374,8 +340,8 @@ v 1 2 3 4 5
 # N = 10
 # arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # result = 0
-import itertools
-arr = [1, 2, 1, 2]
+# import itertools
+# arr = [1, 2, 1, 2]
 # print(tuple(itertools.permutations(arr)))
 # print(tuple(itertools.combinations(arr, 3)))
 # print(tuple(itertools.product(arr, repeat=1)))
@@ -383,3 +349,36 @@ arr = [1, 2, 1, 2]
 # print(tuple(itertools.product(arr, repeat=3)))
 # print(tuple(itertools.combinations_with_replacement(arr, 3)))
 
+# s = [0] * 3
+# for i in range(2):
+#     s[0] = i
+#     for j in range(2):
+#         s[1] = j
+#         for m in range(2):
+#             s[2]=m
+#             ss = []
+#             for n in range(3):
+#                 if s[n] == 1:
+#                     ss.append(n+1)
+#             print(ss)
+N = int(input())
+arr = [list(map(int, input().split())) for _ in range(N)]
+n = len(arr)
+ss_cnt = 2**n
+ss = []
+for i in range(ss_cnt):
+    ss=[]
+    for j in range(n):
+        if i & (1 << j):
+            ss.append(arr[j])
+    ss.append(ss)
+print(ss)
+# def perm(selected, remain):
+#     if not remain:
+#         print(selected)
+#     else:
+#         for i in range(len(remain)):
+#             selected_i = remain[i]
+#             remain_list = remain[:i] + remain[i+1:]
+#             perm(selected + [selected_i], remain_list)
+# perm([],[1,2,3])
