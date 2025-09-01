@@ -107,3 +107,18 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
 1. 앱 생성: python manage.py startapp articles(앱의 이름은 '복수형'으로 지정하는 것을 권장)
 2. 앱 등록: 반드시 앱을 생성한 후에 등록해야 함(등록 후 생성은 불가능) settings.py에 드가서 등록
 
+##### Template System
+- Django Template System: 데이터 표현을 제어하면서, 표현과 관련된 부분을 담당
+- Django Template Launage: Templates에서 조건, 반복, 변수 등의 프로그래밍적 기능을 제공하는 시스템
+    - DTL Syntax:
+    1. Variable: ![1](img/Variable.jpg)
+    2. Filters: ![1](img/Filters.jpg)
+    3. Tags: ![1](img/Tags.jpg)
+    4. Comments: ![1](img/Comments.jpg)
+- 템플릿 상속(Template inheritance):
+    페이지의 공통요소를 포함하고, 하위 템플릿이 재정의 할 수 있는 공간을 정의하는 'skeleton' 템플릿을 작성하여 상속 구조를 구축
+    - extends tag: 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림
+    - block tag:
+    - 
+##### 요청과 응답
+- 
