@@ -115,10 +115,40 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
     2. Filters: ![1](img/Filters.jpg)
     3. Tags: ![1](img/Tags.jpg)
     4. Comments: ![1](img/Comments.jpg)
+    - 주의사항: 파이썬 함수(if for) 등을 사용할 수 있지만 그렇게 설계했을뿐 파이썬과 관련 없음, 되도록 view 함수에서 작성 및 처리
 - 템플릿 상속(Template inheritance):
-    페이지의 공통요소를 포함하고, 하위 템플릿이 재정의 할 수 있는 공간을 정의하는 'skeleton' 템플릿을 작성하여 상속 구조를 구축
-    - extends tag: 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림
-    - block tag:
-    - 
+    **페이지의 공통요소를 포함**하고, **하위 템플릿이 재정의 할 수 있는 공간**을 정의하는 'skeleton' 템플릿을 작성하여 상속 구조를 구축
+    - extends tag: 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림(자식 템플릿 최상단에 작성되야함)
+    - block tag: 하위 템플릿에서 재정의 할 수 있는 블록을 정의(base.html: 상위 템플릿에 작성)
+---
 ##### 요청과 응답
-- 
+- HTML form: 사용자가 HTTP 요청을 서버에 보내는 가장 편리한 방법(from tag)
+    - form element: 사용자로부터 할당된 데이터를 서버로 전송(text, password, checkbox 등)
+    - form 핵심 속성:
+        1. action: 입력 데이터가 전송될 URL 지정(default: form이 있는 페이지의 URL)
+        2. method: 데이터를 어떤 방식으로 보낼지 정의
+            - GET: 데이터 조회 / POST: 데이터 변경, 수정, 생성
+        3. input: 사용자의 데이터를 입력(속성 값에 따라 다양한 유형의 입력 데이터를 받음)
+            - 'name': input의 핵심 속성, 사용자가 입력한 데이터에 붙이는 이름(KEY),  
+            데이터를 제출했을 때 서버는 name 속성에 설정된 값으로만 입력한 데이터에 접근할 수 있음
+    - Query String Parameters:
+        - 사용자의 입력 데이터를 URL 주소에 파라미터를 통해 서버로 보내는 방법
+        - 문자열은 '&'로 연결된 key=value 쌍으로 구성, 기본 URL과는 '?'로 구분됨
+
+##### Django URL
+- URL dispatcher: URL 패턴을 정의하고 해당 패턴이 일치하는 요청을 처리할 view 함수를 연결
+- Variable Routing: URL 일부에 변수를 포함시키는 것<path_converter : variable_name> ex)path('articles/<int:num>/', views.detail)
+    - str, int, slug(알파벳, 숫자, -, _ 로 구성된 문자열), uuid(-를 포함하고 모든 문자가 소문자), path(str은 / 하나씩, path는 전체 경로 한번에)
+- App URL: 각 앱에 URL을 정의(프로젝트와 각 앱이 URL을 나누어 관리를 편하게 하기 위함, include 사용)
+    - include(): 프로젝트 내부 앱들의 URL을 참조할 수 있도록 매핑하는 함수
+    - 구조 변경에 따른 문제점: include한 주소 url에 가서도 다 변경해줘야함
+        - 해결법(Naming URL patterns): URL에 이름을 지정해줌
+    - 이름 지정 후 문제점: 이름이 중복될 수 있음
+        - 해결법(app_name 속성 지정)
+    - url 태그의 최종변화 = {% url 'app_name:path_name' %}
+- 템플릿 경로 지정: 템플릿 기본 경로 외 커스텀 경로 추가하기, 템플릿을 아예 밖으로 꺼내두기
+    ![1](img/추가템플릿경로.jpg)
+    BASE_DIR 위치:![1](img/BASE_DIR.jpg)
+
+##### MODEL
+DB의 테이블을 정의하고 데이터를 조작할 수 있는 기능들을 제공(테이블 구조를 설계하는 청사진)
