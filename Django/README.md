@@ -50,7 +50,7 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
 - Backend
     - 서버 측에서 동작하며, 클라이언트의 요청에 대한 처리와 데이터베이스와의 상호작용 등을 담당: 서버 언어(파이썬, 자바 등) 및 백엔드 프레임워크, 데이터베이스, API, 보안 등
 
-### Famework
+### Framework
 - Web Framework: 웹 애플리케이션을 빠르게 개발할 수 있도록 도와주는 도구(기본 구조, 규칙, 라이브러리 등을 제공)
 인기있는 Backend Framework:
     - Express.js (Node.js)
@@ -110,12 +110,14 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
 ##### Template System
 - Django Template System: 데이터 표현을 제어하면서, 표현과 관련된 부분을 담당
 - Django Template Launage: Templates에서 조건, 반복, 변수 등의 프로그래밍적 기능을 제공하는 시스템
+```bash
     - DTL Syntax:
     1. Variable: ![1](img/Variable.jpg)
     2. Filters: ![1](img/Filters.jpg)
     3. Tags: ![1](img/Tags.jpg)
     4. Comments: ![1](img/Comments.jpg)
     - 주의사항: 파이썬 함수(if for) 등을 사용할 수 있지만 그렇게 설계했을뿐 파이썬과 관련 없음, 되도록 view 함수에서 작성 및 처리
+```
 - 템플릿 상속(Template inheritance):
     **페이지의 공통요소를 포함**하고, **하위 템플릿이 재정의 할 수 있는 공간**을 정의하는 'skeleton' 템플릿을 작성하여 상속 구조를 구축
     - extends tag: 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림(자식 템플릿 최상단에 작성되야함)
@@ -134,7 +136,7 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
     - Query String Parameters:
         - 사용자의 입력 데이터를 URL 주소에 파라미터를 통해 서버로 보내는 방법
         - 문자열은 '&'로 연결된 key=value 쌍으로 구성, 기본 URL과는 '?'로 구분됨
-
+---
 ##### Django URL
 - URL dispatcher: URL 패턴을 정의하고 해당 패턴이 일치하는 요청을 처리할 view 함수를 연결
 - Variable Routing: URL 일부에 변수를 포함시키는 것<path_converter : variable_name> ex)path('articles/<int:num>/', views.detail)
@@ -147,8 +149,69 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
         - 해결법(app_name 속성 지정)
     - url 태그의 최종변화 = {% url 'app_name:path_name' %}
 - 템플릿 경로 지정: 템플릿 기본 경로 외 커스텀 경로 추가하기, 템플릿을 아예 밖으로 꺼내두기
-    ![1](img/추가템플릿경로.jpg)
-    BASE_DIR 위치:![1](img/BASE_DIR.jpg)
-
-##### MODEL
+    ![1](img/추가템플릿경로.jpg)  
+    BASE_DIR(settings에서 경로 지정을 편하게 하기 위해 최상단 지점을 지정해둔 변수) 위치:![1](img/BASE_DIR.jpg)
+---
+##### Model
 DB의 테이블을 정의하고 데이터를 조작할 수 있는 기능들을 제공(테이블 구조를 설계하는 청사진)
+- 개발자가 테이블 구조를 어떻게 설계할지에 대한 코드만 작성할 수 있게 만들어둔 클래스
+![1](img/Model_DB_control.jpg)
+- 앱을 생성할 때 같이 생성되는 models.py에 class 작성, 작성한 클래스는 테이블 기본 구조를 만듬
+    ![1](img/Model_table.jpg)
+    - 클래스의 변수명 = 테이블의 각 필드(열) 이름
+    - models.()Field = 데이터베이스 테이블의 열을 나타내는 구성요소, 데이터의 유형과 제약 조건을 정의
+- Model Field 구성:
+    - Field types(필드 유형): 데이터베이스에 저장될 데이터의 종류를 정의
+        1. CharField(): 제한된 길이의 문자열을 저장(max_length 필수)
+        2. TextField(): 길이 제한이 없는 대용량 텍스트를 저장(무한대는 아님 시스템마다 다름)
+        ![필드 유형](img/field_types.jpg)
+    - Field options(필드 옵션): 필드의 동작과 제약 조건(특정 규칙을 강제하기 위해 열이나 행에 적용하는 규칙, 제한사항)을 정의
+        1. null(의도적으로 값을 비움, None?): 데이터베이스에서 NULL값을 허용할지 여부를 결정(기본: False)
+        2. blank: form에서 빈 값을 허용할지 여부를 결정(기본: False)
+        3. default: 필드의 기본 값을 설정
+        4. auto_now, auto_now_add: DateTimeField의 옵션 순서대로 데이터가 저장될 때마다/ 처음 생성될 때의 날짜와 시간을 저장, update/ created
+- Migrations: model 클래스의 변경사항(필드 생성, 수정 삭제 등)을 DB에 최종 반영하는 방법
+    - 과정: model class(설계도) > makemigrations > migration 파일(최종 설계도) > migrate > DB생성
+    - 명령어:
+        1. python manage.py makemigrations(migration 만들기)
+        2. python manage.py migrate(최종 설계도를 DB에 전달)
+        3. python manage.py showmigrations(migrate 됐는지 확인하는 명령어, X표시가 있으면 완료됐다는 의미)
+        4. python manage.py sqlmigrate articles 0001(해당 migrations 파일이 DB에서 사용하는 언어로 어떻게 번역되어 전달되는지 확인하는 명령어)
+        - articles_article에 만들어진 테이블 확인하기
+    - 추가 모델 필드 작성: 작성을 위해 1번 명령어를 다시 입력하면 기존 테이블이 존재해서 필드를 추가할 때 기본 값 설정이 필요
+        ![입력시 결과창](img/추가모델필드.jpg)
+        1. 현재 대화를 유지하면서 직접 기본 값을 입력, 직접 입력하기보단 그냥 enter를 누르면 기본 값으로 설정 됨
+        2. 현재 대화에서 나간 후 models.py에 기본 값 관련 설정을 하는 방법
+        - 과정 종료 후 migration 파일이 생성됨(git commit처럼 문제가 생겼을 시 이 파일들을 보고 복구)
+        - python manage.py migrate 입력하면 적용
+    - 데이터베이스 초기화: migration, db.sqlite3 파일 삭제(migrations 폴더와 __init__.py 지우면 안됨)
+- Automatic admin interface: 추가 설치 및 설정 없이 자동으로 제공하는 관리자 인터페이스(데이터 확인 및 테스트를 진행할 때 사용)
+    1. python manage.py createsuperuser(admin 계정 생성)
+    2. DB에 auth_user에 저장됨
+    3. admin에 모델 클래스 등록: admin.py에 모델 클래스를 등록해야 admin site에서 확인 가능
+    ![admin에 모델 클래스 등록 방법](img/admin_add_modelclass.jpg)
+    4. admin site에 로그인하면 데이터 생성, 수정, 삭제 쉽게 진행 가능
+- SQLite: DB 관리 시스템 중 하나 Django의 기본 데이터베이스로 사용
+---
+##### ORM
+- Object-Relational-Mapping: 객체 지향 프로그래밍 언어를 사용해 호환되지 않는 유형의 시스템 간의 데이터를 변환하는 기술
+    - 역할: Django와 DB간에 사용하는 언어가 다를 경우 ORM이 중간에서 해석(interpreter)
+- QuerytSet API: ORM에서 데이터를 검색, 필터링, 정렬 및 그룹화 하는 데 사용하는 도구(API로 SQL이 아닌 Python 코드로 데이터를 처리)
+    - QuerytSet API의 구문 Model class.Manager.Queryset API ex)Article.objects.all(), objects는 고정
+    - python의 모델 클래스와 인스턴스를 활용해 DB에 데이터를 저장, 조회, 수정, 삭제하는 것
+- Query
+    - 데이터베이스에 특정한 데이터를 보여달라는 요청
+    - '쿼리문을 작성한다' > 원하는 데이터를 얻기 위해 데이터베이스에 요청을 보낼 코드를 작성한다
+- QuerySet
+    - 데이터베이스에게서 전달 받은 객체 목록(데이터모음): 순회가 가능한 데이터 1개 이상의 데이터를 불러와 사용 가능
+    - Django ORM을 통해 만들어진 자료형
+    - 데이터베이스가 단일한 객체를 반활 할 때는 모델(Class)의 인스턴스로 반환됨
+    ![구문 동작 예시](img/queryset_api_action.jpg)
+- Django shell: Django 환경 안에서 실행되는 python shell, django-extensions 패키지의 shell_plus > import 다 해줌
+- CRUD: Create(저장), Read(조회), Update(갱신), Delete(삭제)
+    - Create
+        1. 새로운 행을 추가해서 데이터 추가
+            - article = Areicle(): Article(class)로부터 article(instance) 생성 >  
+            article.title = 'first': 인스턴스 변수(title)에 first 할당 >  
+            article.content = 'django': 인스턴스 변수(content)에 django 할당 >  
+            article.save(): DB에 값 저장(save 전까진 저장 안됨)
