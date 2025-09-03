@@ -213,3 +213,36 @@
 #             min_num = n
 #     Answer = max_num - min_num
 #     print(f"#{test_case} {Answer}")
+T = int(input())
+
+for tc in range(1, T + 1):
+    N, Kmin, Kmax = map(int, input().split())
+    scores = list(map(int, input().split()))
+    scores.sort()
+    print(scores)
+    unique_scores = sorted(set(scores))  # 중복 제거된 점수들
+    print(unique_scores)
+    
+    result = float('inf')
+    
+    # 기준값 두 개 고르기
+    for i in range(len(unique_scores)):
+        for j in range(i, len(unique_scores)):
+            c_count, b_count, a_count = 0, 0, 0
+            for score in scores:
+                if score <= unique_scores[i]:
+                    c_count += 1
+                elif score <= unique_scores[j]:
+                    b_count += 1
+                else:
+                    a_count += 1
+            
+            # 조건 확인 (세 반 모두 최소/최대 인원 조건 만족해야 함)
+            if (Kmin <= c_count <= Kmax) and (Kmin <= b_count <= Kmax) and (Kmin <= a_count <= Kmax):
+                diff = max(c_count, b_count, a_count) - min(c_count, b_count, a_count)
+                result = min(result, diff)
+    
+    if result == float('inf'):
+        print(-1)
+    else:
+        print(result)
