@@ -110,14 +110,12 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
 ##### Template System
 - Django Template System: 데이터 표현을 제어하면서, 표현과 관련된 부분을 담당
 - Django Template Launage: Templates에서 조건, 반복, 변수 등의 프로그래밍적 기능을 제공하는 시스템
-```bash
     - DTL Syntax:
-    1. Variable: ![1](img/Variable.jpg)
+    1. Variable: ![DRL Variable](img/Variable.jpg)
     2. Filters: ![1](img/Filters.jpg)
     3. Tags: ![1](img/Tags.jpg)
     4. Comments: ![1](img/Comments.jpg)
     - 주의사항: 파이썬 함수(if for) 등을 사용할 수 있지만 그렇게 설계했을뿐 파이썬과 관련 없음, 되도록 view 함수에서 작성 및 처리
-```
 - 템플릿 상속(Template inheritance):
     **페이지의 공통요소를 포함**하고, **하위 템플릿이 재정의 할 수 있는 공간**을 정의하는 'skeleton' 템플릿을 작성하여 상속 구조를 구축
     - extends tag: 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림(자식 템플릿 최상단에 작성되야함)
@@ -133,6 +131,7 @@ google.com 입력 > domain주소(ip주소) 받아오기 > 인증서도 받아오
         3. input: 사용자의 데이터를 입력(속성 값에 따라 다양한 유형의 입력 데이터를 받음)
             - 'name': input의 핵심 속성, 사용자가 입력한 데이터에 붙이는 이름(KEY),  
             데이터를 제출했을 때 서버는 name 속성에 설정된 값으로만 입력한 데이터에 접근할 수 있음
+        4. submit: 입력한 데이터 전송?
     - Query String Parameters:
         - 사용자의 입력 데이터를 URL 주소에 파라미터를 통해 서버로 보내는 방법
         - 문자열은 '&'로 연결된 key=value 쌍으로 구성, 기본 URL과는 '?'로 구분됨
@@ -273,3 +272,22 @@ DB의 테이블을 정의하고 데이터를 조작할 수 있는 기능들을 �
         2. update
 - 캐시(Cache): 데이터나 정보를 임시로 저장해두는 메모리나 디스크 공간, 이전에 접근한 데이터를 빠르게 검색하고 접근할 수 있도록 함
 - Field lookups: Query에서 조건을 구성하는 방법, Article.objects.filter(name__조건)으로 사용
+---
+##### Form
+HTML 'form': 사용자가 HTTP 요청을 서버에 보내기 위해(데이터를 제출 받기 위해) 활용한 방법, **유효성 검사** 불가능
+- 유효성 검사
+    - 하는 이유: 보안 강화, 데이터 무결성 유지, UX 향상(백엔드, 프론트엔드 더블체크)
+    - 구현이 어려워서 Django Form을 사용
+- Django Form: 유효성 검사를 단순화하고 자동화 할 수 있는 기능을 제공
+    - ![form class](img/Form_class정의.jpg): 유효성 검사 기준
+    - Form rendering options: label, input쌍을 HTML 태그로 감싸는 옵션(form.as_'?')
+- Widgets: input element의 표현을 담당(django widjet 검색)
+---
+##### ModelForm
+사용자 입력 데이터를 DB에 저장해야 할 때(Form은 저장X): Model과 연결된 Form을 자동 생성
+
+![model form](img/Model_Form.jpg)
+- Meta class: set형식
+    - fields: 포함하고픈 field
+    - exculde: 제외하고픈 field
+- is_valid= 유효성 검사 결과를 Boolean으로 반환
