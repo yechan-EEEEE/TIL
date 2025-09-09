@@ -282,6 +282,9 @@ HTML 'form': 사용자가 HTTP 요청을 서버에 보내기 위해(데이터를
     - ![form class](img/Form_class정의.jpg): 유효성 검사 기준
     - Form rendering options: label, input쌍을 HTML 태그로 감싸는 옵션(form.as_'?')
 - Widgets: input element의 표현을 담당(django widjet 검색)
+- 정리:
+    1. 사용자로부터 데이터를 수집하고 처리하기 위한 강력하고 유연한 도구
+    2. HTML form의 생성, 데이터 유효성 검사 및 처리를 쉽게 할 수 있도록 도움
 ---
 ##### ModelForm
 사용자 입력 데이터를 DB에 저장해야 할 때(Form은 저장X): Model과 연결된 Form을 자동 생성
@@ -290,4 +293,17 @@ HTML 'form': 사용자가 HTTP 요청을 서버에 보내기 위해(데이터를
 - Meta class: set형식
     - fields: 포함하고픈 field
     - exculde: 제외하고픈 field
-- is_valid= 유효성 검사 결과를 Boolean으로 반환
+    - 주의사항: ModelForm에 대한 추가 정보나 속성을 작성하는 클래스 구조를 Meta 클래스로 작성했을 뿐이며,  
+    파이썬의 inner class와 같은 문법적인 관점으로 접근하지 말 것
+- is_valid= 유효성 검사 결과를 Boolean으로 반환  
+- create  
+![create](img/ModelForm_create.jpg)  
+: 유효성 검사 통과 못하면 form 객체에는 그에 맞는 에러메시지가 포함되어 다음 코드로 진행
+- edit  
+![edit](img/ModelForm_views_edit.jpg)
+![edit](img/ModelForm_edit_html.jpg)
+- update  
+![update](img/ModelForm_update.jpg)
+- save(): 데이터베이스 객체를 만들고 저장하는 ModelForm의 인스턴스 메서드(view 함수 안에다 넣음)  
+![create](img/save_create.jpg)  
+![update](img/save_update.jpg)
