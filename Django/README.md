@@ -307,3 +307,36 @@ HTML 'form': 사용자가 HTTP 요청을 서버에 보내기 위해(데이터를
 - save(): 데이터베이스 객체를 만들고 저장하는 ModelForm의 인스턴스 메서드(view 함수 안에다 넣음)  
 ![create](img/save_create.jpg)  
 ![update](img/save_update.jpg)
+
+---
+
+##### Static files
+서버에서 변경되지 않고 고정적으로 제공하는 파일(image, JS, CSS 등)
+- 웹 서버(로직이 끝나고 자원을 제공하는 서버)의 기본 동작은 요청받은 URL로 서버에 존재하는 자원을 제공(Static file을 제공하기 위해선 URL이 필요)
+- 기본 경로: app폴더/static/, DTL의 static tag를 사용, built-in tag가 아니여서 load tag로 import후 사용 가능
+    - STATIC_URL: 실제 경로가 아닌 URL > 보여주기식(settings.py에서 설정)
+- 추가 경로: STATICFILES_DIRS에 문자열 값으로 추가 경로 설정(settings.py), STATICFILES_DIRS = [ BASE_DIR / 'static', ]
+    - img tag > static tag를 사용해 경로 제공
+---
+##### Media files
+사용자가 웹에서 업로드하는 파일
+- ImageField(): 이미지 업로드에 사용하는 모델 필드, 이미지 파일의 경로가 문자열로 저장됨
+- 준비사항:
+    1. settings.py에 MEDIA_ROOT, MEDIA_URL 설정
+        - MEDIA_ROOT: 미디어 파일의 절대 경로(MEDIA_ROOT = BASE_DIR / 'media')
+        - MEDIA_URL(보여주기식): STATIC_URL과 동일
+    2. MEDIA_ROOT와 MEDIA_URL에 대한 URL 지정
+        - ![urlrs.py](img/static_media.jpg)
+- 이미지 업로드:
+    1. models.py에 imagefield를 blank=true로 작성(Pillow 라이브러리 필수)
+    2. form 요소의 enctype 속성 추가(데이터 전송방식 결정, 이미지는 바이너리 파일, multipart/form-data로 바꿔야함)
+    3. ModelForm의 2번째 인자로 요청 받은 파일 데이터 작성(files=request.FILES)
+- 업로드 이미지 제공:
+    - img tag에 url 속성으로 작성, {{ (인스턴스 변수명).(모델 컬럼명).url }}
+    - 이미지가 있는 경우에만 렌더링 할 수 있도록 {if (인스턴스 변수명).(모델 컬럼명)} 사용 ex) if article.image
+- 업로드 이미지 수정:
+    - 수정 html form 요소에 enctype 속성(multipart/form-data) 추가
+    - 수정 view 함수에서 업로드 파일에 대한 추가 코드 작성(files=request.FILES)
+- 저장 경로 추가 설정:
+    - ImageField()의 upload_to 속성으로 추가 경로 설정  
+    ![추가 경로 설정](img/imagefield_upload_to.jpg)
