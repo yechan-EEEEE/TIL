@@ -59,33 +59,48 @@
 # # 확인: root의 자식 번호 출력
 # print("루트 자식:", [child.val for child in root.children])
 
-# 1. 노드 클래스
-class Node:
-    def __init__(self, val):
-        self.val = val
-        self.children = []
 
-# 2. 부모-자식 정보
-nums = [2,1,2,5,1,6,5,3,6,4]   # 입력 예시
-n = max(nums)
+class TreeNode:
+    def __init__(self, key):
+        self.val = key
+        self.left = None
+        self.right = None
 
-# 3. 노드 객체 생성
-nodes = [None] + [Node(i) for i in range(1, n+1)]
+# 입력
+nums = list(map(int, input().split()))
+edges = [(nums[i], nums[i+1]) for i in range(0, len(nums), 2)]
+print(edges)
+# 모든 노드 번호 모아서 딕셔너리 생성
+all_nodes = set()
+for p, c in edges:
+    all_nodes.add(p)
+    all_nodes.add(c)
 
-# 4. 부모-자식 연결
-for i in range(0, len(nums), 2):
-    parent = nums[i]
-    child = nums[i+1]
-    nodes[parent].children.append(nodes[child])
+nodes = {v: TreeNode(v) for v in all_nodes}
+print(nodes)
 
-# 5. 루트 노드 (예제에서는 2)
-root = nodes[2]
+# 간선(부모-자식 관계) 처리
+for p, c in edges:
+    if nodes[p].left is None:       # 왼쪽 비었으면 왼쪽
+        nodes[p].left = nodes[c]
+    else:                           # 아니면 오른쪽
+        nodes[p].right = nodes[c]
+print(nodes)
 
-# 6. 트리 구조 출력 함수
-def print_tree(node, level=0):
-    print('  ' * level + str(node.val))  # 들여쓰기(level) + 값
-    for child in node.children:
-        print_tree(child, level + 1)     # 자식은 level + 1
+# 루트 찾기 (부모로만 등장한 노드 - 자식으로만 등장한 노드)
+parents = {p for p, _ in edges}
+print(parents)
+children = {c for _, c in edges}
+print(children)
+root_candidates = parents - children
+print(root_candidates)
+root = nodes[root_candidates.pop()]
+print(root)
 
-# 7. 트리 출력
-print_tree(root)
+# 확인용 출력 (전위 순회)
+def preorder(node):
+    if not node:
+        return []
+    return [node.val] + preorder(node.left) + preorder(node.right)
+
+print("Preorder:", preorder(root))
