@@ -57,7 +57,6 @@ def post_rec(node):
         print(node, end=' ')
 
 
-# 스택으로 하기
 def pre_order(root):
     stack = [root]
     while stack:
