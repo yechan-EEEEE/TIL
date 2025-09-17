@@ -16,7 +16,94 @@
 12 7 4 2 1 8 5 9 3 10 6 13 11
 12 7 4 2 8 9 5 10 13 11 6 3 1
 
+                     1
+                2          3
+            4          5         6
+        7            8   9   10     11
+     12                           13
+
+[[], [2, 3], [4], [5, 6], [7], [8, 9], [10, 11], [12], [], [], [], [13], [], []]
+
 stack = [1]
 node = 1 / stack[]
 print 1 ' '
-if len(tree[node])
+stack[3]
+stack[3,2]
+
+node = 2 / stack[3]
+print 1 2
+stack[3, 4]
+
+node = 4 / stack[3]
+print 1 2 4
+stack[3, 7]
+
+node = 7 / stack[3]
+print 1 2 4 7
+stack[3, 12]
+
+node = 12 / stack[3]
+print 1 2 4 7 12
+stack[3]
+
+node = 3 / stack[]
+print 1 2 4 7 12 3
+stack[6, 5]
+
+
+
+                     1
+                2          3
+            4          5         6
+        7            8   9   10     11
+     12                           13
+
+[[], [2, 3], [4], [5, 6], [7], [8, 9], [10, 11], [12], [], [], [], [13], [], []]
+
+stack = [] / node = 1
+
+stack = [1]
+node = 2
+
+stack = [1, 2]
+node = 4
+
+stack = [1, 2, 4]
+node = 7
+
+stack = [1, 2, 4, 7]
+node = 12
+
+stack = [1, 2, 4, 7, 12]
+
+stack = [1, 2, 4, 7]
+print = 12
+
+stack = [1, 2, 4]
+print = 12, 7
+
+stack = [1, 2]
+print = 12, 7, 4
+
+stack = [1]
+print = 12, 7, 4, 2
+
+stack = []
+print = 12, 7, 4, 2, 1
+node = 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
