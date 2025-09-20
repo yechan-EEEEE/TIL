@@ -403,4 +403,4 @@ v 1 2 3 4 5
 #                 break  # 한 트럭엔 하나만 싣기
 
 #     print(f'#{tc} {max_weight}')
-from collections import defaultdict
+# from collections import defaultdict

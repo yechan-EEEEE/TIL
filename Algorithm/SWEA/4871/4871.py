@@ -9,7 +9,7 @@ for tc in range(1, T + 1):
         a, b = map(int, input(). split())
         graph[a].append(b)
 
-    # print(graph)
+    print(graph)
 
     S, G = map(int, input().split())
 
