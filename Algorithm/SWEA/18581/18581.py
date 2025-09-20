@@ -75,7 +75,7 @@ pre_order(root)
 print()
 in_order(root)
 print()
-post_order(root)
+post_order_two_stack(root)
 
 
 # def pre_ans(root):  # 전위
