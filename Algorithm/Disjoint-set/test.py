@@ -72,7 +72,7 @@ def union(x, y):
         elif rank[px] > rank[py]:
             p[py] = px
         else:
-            p[y] = px
+            p[py] = px
             rank[px] += 1
 
 
