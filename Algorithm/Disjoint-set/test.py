@@ -18,14 +18,15 @@ rank = [0] * (N+1)
 #
 #
 # def union(x, y):
-#     # 최적화 전
-#     # px = find_set(x)
-#     # py = find_set(y)
+#     최적화 전
+#     px = find_set(x)
+#     py = find_set(y)
 #
-#     # if px < py:
-#     #     p[y] = px
-#     # else:
-#     #     p[x] = py
+#     if px != py:
+#         if px < py:
+#             p[y] = px
+#         else:
+#             p[x] = py
 #
 #     # 최적화
 #     px = find_set(x)
@@ -60,10 +61,11 @@ def union(x, y):
     px = find_set(x)
     py = find_set(y)
 
-    # if px > py:
-    #     p[x] = py
-    # elif px < py:
-    #     p[y] = px
+    # if px != py:
+    #     if px > py:
+    #         p[x] = py
+    #     elif px < py:
+    #         p[y] = px
     if px != py:
         if rank[px] < rank[py]:
             p[px] = py

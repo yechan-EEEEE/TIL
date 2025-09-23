@@ -9,11 +9,12 @@ def union(x, y):
     # 최적화 전
     # px = find_set(x)
     # py = find_set(y)
-
-    # if px < py:
-    #     p[y] = px
-    # else:
-    #     p[x] = py
+    #
+    # if px != py:
+    #     if px < py:
+    #         p_list[y] = px
+    #     else:
+    #         p_list[x] = py
 
     # 최적화
     px = find_set(x)
