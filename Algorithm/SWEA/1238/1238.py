@@ -3,12 +3,12 @@ from collections import deque
 #     if x != p_list[x]:
 #         p_list[x] = find_set(p_list[x])
 #     return p_list[x]
-#
-#
+
+
 # def union_set(x, y):
 #     px = find_set(x)
 #     py = find_set(y)
-#
+
 #     if px != py:
 #         if rank[px] > rank[py]:
 #             p_list[py] = px
@@ -35,3 +35,27 @@ T = 10
 for tc in range(1, T + 1):
     length, start = map(int, input().split())
     data = list(map(int, input().split()))
+    queue = deque()
+    graph = [[] for _ in range(101)]
+    for i in range(0, length, 2):
+        graph[data[i]].append(data[i+1])
+
+    
+    visited = [0] * 101
+    queue = deque([start])
+    visited[start] = 1
+    
+    while queue:
+        cur = queue.popleft()
+        for nxt in graph[cur]:
+            # print(nxt)
+            if not visited[nxt]:
+                visited[nxt] = visited[cur] + 1
+                queue.append(nxt)
+    
+    max_level = max(visited)
+    ans = 0
+    for i in range(101):
+        if visited[i] == max_level:
+            ans = max(ans, i)
+    print(f"#{tc} {ans}")
