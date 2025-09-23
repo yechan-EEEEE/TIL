@@ -4,9 +4,11 @@ def rotate_gear(gear, direction):
     if direction == 1:  # 시계 방향
         x = gear.pop()
         gear.appendleft(x)
+
     elif direction == -1:  # 반시계 방향
         x = gear.popleft()
         gear.append(x)
+        
 
 T = int(input())
 for tc in range(1, T + 1):
