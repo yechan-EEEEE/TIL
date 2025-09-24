@@ -61,11 +61,6 @@ def union(x, y):
     px = find_set(x)
     py = find_set(y)
 
-    # if px != py:
-    #     if px > py:
-    #         p[x] = py
-    #     elif px < py:
-    #         p[y] = px
     if px != py:
         if rank[px] < rank[py]:
             p[px] = py
@@ -74,34 +69,3 @@ def union(x, y):
         else:
             p[py] = px
             rank[px] += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
