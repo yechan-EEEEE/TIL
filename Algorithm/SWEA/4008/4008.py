@@ -1,4 +1,4 @@
-def dfs(cnt, score, operations):
+def dfs(cnt, score, operation_list):
     global max_result, min_result
 
     if cnt == N - 1:
@@ -8,22 +8,22 @@ def dfs(cnt, score, operations):
 
     if operations[0] > 0:
         operations[0] -= 1
-        dfs(cnt + 1, score + num_list[cnt + 1], operations)
+        dfs(cnt + 1, score + num_list[cnt + 1], operation_list)
         operations[0] += 1
 
     if operations[1] > 0:
         operations[1] -= 1
-        dfs(cnt + 1, score - num_list[cnt + 1], operations)
+        dfs(cnt + 1, score - num_list[cnt + 1], operation_list)
         operations[1] += 1
 
     if operations[2] > 0:
         operations[2] -= 1
-        dfs(cnt + 1, score * num_list[cnt + 1], operations)
+        dfs(cnt + 1, score * num_list[cnt + 1], operation_list)
         operations[2] += 1
 
     if operations[3] > 0:
         operations[3] -= 1
-        dfs(cnt + 1, int(score / num_list[cnt + 1]), operations)
+        dfs(cnt + 1, int(score / num_list[cnt + 1]), operation_list)
         operations[3] += 1
 
 
