@@ -1,6 +1,4 @@
-import sys
 from collections import deque
-sys.stdin = open('island_input.txt')
 
 dxy = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, -1), (1, 1), (-1, 1)]
 
