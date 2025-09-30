@@ -404,3 +404,12 @@ v 1 2 3 4 5
 
 #     print(f'#{tc} {max_weight}')
 # from collections import defaultdict
+# import heapq
+
+# number = [10, 1, 5, 3, 8, 7, 4]
+# heapq.heapify(number)
+# print(number)
+# heapq.heappush(number, -1)
+# print(number)
+# small = heapq.heappop(number)
+# print(small, number)
