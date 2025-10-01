@@ -413,3 +413,47 @@ v 1 2 3 4 5
 # print(number)
 # small = heapq.heappop(number)
 # print(small, number)
+
+import sys
+from collections import deque
+sys.stdin = open('input.txt', 'r')
+
+
+dxy = [(1,0),(0,1),(-1,0),(0,-1),(1,1),(-1,-1),(-1,1),(1,-1)]
+
+def bfs(i, j):
+    global cnt
+    q = deque([(i, j)])
+    visited[i][j] = True
+
+
+    while q:
+        x, y = q.popleft()
+
+        for dx, dy in dxy:
+            nx, ny = x + dx, y + dy
+
+            if 0 <= nx < N and 0 <= ny < N:
+                if maze[nx][ny] == 3:
+
+                    return 1
+                if maze[nx][ny] == 0 and visited[nx][ny] == False:
+                    visited[nx][ny] = True
+                    q.append((nx, ny))
+
+    return 0
+
+
+
+for tc in range(1, 11):
+    T = int(input())
+    N = 16
+    maze = [list(map(int, input().strip())) for _ in range(N)]
+    visited = [[False] * N for _ in range(N)]
+    cnt = 1
+    for i in range(N):
+        for j in range(N):
+            if maze[i][j] == 2:
+                result = bfs(i, j)
+
+    print(f"#{tc} {result} 길의 갯수는 {cnt}")
