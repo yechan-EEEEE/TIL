@@ -142,7 +142,6 @@ v 1 2 3 4 5
 
 '''
 
-
 # T = int(input())
 # for tc in range(1, T+1):
 #     N, M = list(map(int, input().split()))
@@ -414,18 +413,15 @@ v 1 2 3 4 5
 # small = heapq.heappop(number)
 # print(small, number)
 
-import sys
 from collections import deque
-sys.stdin = open('input.txt', 'r')
+dxy = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
 
-dxy = [(1,0),(0,1),(-1,0),(0,-1),(1,1),(-1,-1),(-1,1),(1,-1)]
-
-def bfs(i, j):
+def bfs(x, y):
     global cnt
-    q = deque([(i, j)])
-    visited[i][j] = True
-
+    q = deque([(x, y)])
+    visited[x][y] = True
+    mov_cnt[x][y] = 0
 
     while q:
         x, y = q.popleft()
@@ -435,14 +431,12 @@ def bfs(i, j):
 
             if 0 <= nx < N and 0 <= ny < N:
                 if maze[nx][ny] == 3:
-
-                    return 1
-                if maze[nx][ny] == 0 and visited[nx][ny] == False:
+                    return 1, mov_cnt[x][y]+1
+                if maze[nx][ny] == 0 and not visited[nx][ny]:
                     visited[nx][ny] = True
+                    mov_cnt[nx][ny] = mov_cnt[x][y] + 1
                     q.append((nx, ny))
-
-    return 0
-
+    return 0, "도착 못함"
 
 
 for tc in range(1, 11):
@@ -450,10 +444,31 @@ for tc in range(1, 11):
     N = 16
     maze = [list(map(int, input().strip())) for _ in range(N)]
     visited = [[False] * N for _ in range(N)]
-    cnt = 1
+    mov_cnt = [[0] * N for _ in range(N)]
+    cnt = 0
     for i in range(N):
         for j in range(N):
             if maze[i][j] == 2:
-                result = bfs(i, j)
+                result, cnt = bfs(i, j)
 
-    print(f"#{tc} {result} 길의 갯수는 {cnt}")
+    print(f"#{tc} {result} {cnt}")
+
+"""
+1
+1111111111111111
+1210000000100011
+1010101110101111
+1000100010100011
+1111111010101011
+1000000010101011
+1011111110111011
+1010000010001011
+1010101111101011
+1010100010001011
+1010111010111011
+1010001000100011
+1011101111101011
+1000100000001311
+1111111111111111
+1111111111111111
+"""
