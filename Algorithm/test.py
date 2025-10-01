@@ -413,45 +413,45 @@ v 1 2 3 4 5
 # small = heapq.heappop(number)
 # print(small, number)
 
-from collections import deque
-dxy = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
+# from collections import deque
+# dxy = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
 
-def bfs(x, y):
-    global cnt
-    q = deque([(x, y)])
-    visited[x][y] = True
-    mov_cnt[x][y] = 0
+# def bfs(x, y):
+#     global cnt
+#     q = deque([(x, y)])
+#     visited[x][y] = True
+#     mov_cnt[x][y] = 0
 
-    while q:
-        x, y = q.popleft()
+#     while q:
+#         x, y = q.popleft()
 
-        for dx, dy in dxy:
-            nx, ny = x + dx, y + dy
+#         for dx, dy in dxy:
+#             nx, ny = x + dx, y + dy
 
-            if 0 <= nx < N and 0 <= ny < N:
-                if maze[nx][ny] == 3:
-                    return 1, mov_cnt[x][y]+1
-                if maze[nx][ny] == 0 and not visited[nx][ny]:
-                    visited[nx][ny] = True
-                    mov_cnt[nx][ny] = mov_cnt[x][y] + 1
-                    q.append((nx, ny))
-    return 0, "도착 못함"
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 if maze[nx][ny] == 3:
+#                     return 1, mov_cnt[x][y]+1
+#                 if maze[nx][ny] == 0 and not visited[nx][ny]:
+#                     visited[nx][ny] = True
+#                     mov_cnt[nx][ny] = mov_cnt[x][y] + 1
+#                     q.append((nx, ny))
+#     return 0, "도착 못함"
 
 
-for tc in range(1, 11):
-    T = int(input())
-    N = 16
-    maze = [list(map(int, input().strip())) for _ in range(N)]
-    visited = [[False] * N for _ in range(N)]
-    mov_cnt = [[0] * N for _ in range(N)]
-    cnt = 0
-    for i in range(N):
-        for j in range(N):
-            if maze[i][j] == 2:
-                result, cnt = bfs(i, j)
+# for tc in range(1, 11):
+#     T = int(input())
+#     N = 16
+#     maze = [list(map(int, input().strip())) for _ in range(N)]
+#     visited = [[False] * N for _ in range(N)]
+#     mov_cnt = [[0] * N for _ in range(N)]
+#     cnt = 0
+#     for i in range(N):
+#         for j in range(N):
+#             if maze[i][j] == 2:
+#                 result, cnt = bfs(i, j)
 
-    print(f"#{tc} {result} {cnt}")
+#     print(f"#{tc} {result} {cnt}")
 
 """
 1
@@ -472,3 +472,20 @@ for tc in range(1, 11):
 1111111111111111
 1111111111111111
 """
+T = int(input())
+for tc in range(1, T + 1):
+    N = int(input())
+
+    low, high = 1, 10**6
+    ans = -1
+    while low <= high:
+        mid = (low + high) // 2
+        cube = mid * mid * mid
+        if cube == N:
+            ans = mid
+            break
+        elif cube < N:
+            low = mid + 1
+        else:
+            high = mid - 1
+    print(f"#{tc} {ans}")
