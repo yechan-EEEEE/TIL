@@ -22,7 +22,7 @@ for tc in range(1, T + 1):
         if cube == N:
             ans = mid
             break
-        elif cube < N:
+        elif cube > low:
             low = mid + 1
         else:
             high = mid - 1
