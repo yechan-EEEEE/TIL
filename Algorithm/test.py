@@ -472,20 +472,3 @@ v 1 2 3 4 5
 1111111111111111
 1111111111111111
 """
-T = int(input())
-for tc in range(1, T + 1):
-    N = int(input())
-
-    low, high = 1, 10**6
-    ans = -1
-    while low <= high:
-        mid = (low + high) // 2
-        cube = mid * mid * mid
-        if cube == N:
-            ans = mid
-            break
-        elif cube < N:
-            low = mid + 1
-        else:
-            high = mid - 1
-    print(f"#{tc} {ans}")
