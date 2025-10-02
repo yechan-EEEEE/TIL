@@ -472,20 +472,36 @@ v 1 2 3 4 5
 1111111111111111
 1111111111111111
 """
-def coin_change(coins, amount):
-    dp = [amount + 1] * (amount + 1)
+# def coin_change(coins, amount):
+#     dp = [amount + 1] * (amount + 1)
 
-    dp[0] = 0
+#     dp[0] = 0
 
-    for i in range(1, amount + 1):
-        for coin in coins:
-            if coin <= i:
-                dp[i] = min(dp[i], dp[i - coin] + 1)
+#     for i in range(1, amount + 1):
+#         for coin in coins:
+#             if coin <= i:
+#                 dp[i] = min(dp[i], dp[i - coin] + 1)
     
-    return dp[amount] if dp[amount] != amount + 1 else -1
+#     return dp[amount] if dp[amount] != amount + 1 else -1
 
-coins = [1, 6, 8, 11]
-amount = 20
+# coins = [1, 6, 8, 11]
+# amount = 20
 
-result = coin_change(coins, amount)
-print(result)
+# result = coin_change(coins, amount)
+# print(result)
+"""
+n * m 크기의 격자에 먼지가 쌓여있다
+각 칸에 구분이 되게 쌓여있다
+기계로 청소를 한다
+기계는 항상 1번 열에 설치, 크기는 두 칸
+
+1. 먼지가 인접한 상하좌우로 확산
+    인접한 방향에 기계가 있거나, 방의 범위를 벗어나면 확산 X
+    확산되는 양은 원래 칸의 양에 5를 나눈 값, 소수점은 버림
+    각 칸에 확산될때마다 원래 칸의 양은 확산된 만큼 줄어듬
+    확산된 먼지는 방에 있는 모든 먼지가 확산을 끝낸 다음 해당 칸에 더해짐
+2. 기계가 청소를 시작
+    기계의 윗칸에서는 반시계 방향으로 아랫칸에서는 시계 방향으로 바람을 일으킴
+    바람이 불면 먼지가 바람의 방향대로 모두 한칸씩 이동
+    기계에서 나온 바람은 먼지가 없고 기계로 들어간 먼지는 사라짐
+"""
