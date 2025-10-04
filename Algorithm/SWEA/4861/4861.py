@@ -1,16 +1,3 @@
-# """
-#
-# 2차원 리스트 만들고
-# 델타 하는데 M만큼 반복
-# 범위 안에 있을 때만 확인
-# M만큼 다 돌고 회문이면 출력
-# 회문인지 어떻게 확인할까요
-# 새로운 리스트에 집어넣고 앞에서 절반 뒤에서 절반 비교?
-# range 10 // 2 13//2 :M//2 | -1:-1:M//2
-#
-#
-# """
-#
 # T = int(input())
 # dxy = [[0, 1], [1, 0]]
 #
@@ -128,64 +115,92 @@
 #
 #     print(f'#{tc} {answer_word}')
 
-T = int(input())
+# T = int(input())
 
-for tc in range(1, T + 1):
-    N, M = map(int, input().split())
-    word_list = []
-    for _ in range(N):
-        word_list.append(input())
-    result = ""
+# for tc in range(1, T + 1):
+#     N, M = map(int, input().split())
+#     word_list = []
+#     for _ in range(N):
+#         word_list.append(input())
+#     result = ""
+
+#     for i in range(N):
+#         wid_word = ""
+#         for j in range(0, N - M + 1):
+#             wid_word = word_list[i][j:j+M]
+#             if wid_word == wid_word[::-1]:
+#                 result = wid_word
+#                 break
+#         if result:
+#             break
+
+#     if not result:
+#         for i in range(N):
+#             for j in range(0, N-M+1):
+#                 len_word = ""
+#                 for k in range(j, j+M):
+#                     len_word += word_list[k][i]
+#                 if len_word == len_word[::-1]:
+#                     result = len_word
+#                     break
+#             if result:
+#                 break
+#     print(f'#{tc} {result}')
+
+
+# def brute_force(N, M, grid):
+
+#     result = ()
+#     for i in range(N):
+#         for j in range(N - M + 1):
+#             word = grid[i][j:j+M]
+#             if word == word[::-1]:
+#                 result = ''.join(word)
+#                 return result
+    
+#     for j in range(N):
+#         for i in range(N - M + 1):
+#             word = []
+#             for k in range(M):
+#                 word.append(grid[i+k][j])
+#             if word == word[::-1]:
+#                 result = ''.join(word)
+#                 return result
+#     return -1
+
+
+# T = int(input())
+# for tc in range(1, T + 1):
+#     N, M = map(int, input().split())
+#     grid = [list(input().strip()) for _ in range(N)]
+#     result = brute_force(N, M, grid)
+#     print(f'#{tc} {result}')
+
+
+def brute_force(N, M, grid):
+    result = ()
 
     for i in range(N):
-        wid_word = ""
-        for j in range(0, N - M + 1):
-            wid_word = word_list[i][j:j+M]
-            if wid_word == wid_word[::-1]:
-                result = wid_word
-                break
-        if result:
-            break
+        for j in range(N - M + 1):
+            word = grid[i][j:j+M]
+            if word == word[::-1]:
+                result = ''.join(word)
+                return result
+    
+    for j in range(N):
+        for i in range(N - M + 1):
+            word = []
+            for k in range(M):
+                word.append(grid[i+k][j])
+            if word == word[::-1]:
+                result = ''.join(word)
+                return result
+    return -1
 
-    if not result:
-        for i in range(N):
-            for j in range(0, N-M+1):
-                len_word = ""
-                for k in range(j, j+M):
-                    len_word += word_list[k][i]
-                if len_word == len_word[::-1]:
-                    result = len_word
-                    break
-            if result:
-                break
+
+T = int(input())
+for tc in range(1, T + 1):
+    N, M = map(int, input().split())
+    grid = [list(input().strip()) for _ in range(N)]
+    result = brute_force(N, M, grid)
     print(f'#{tc} {result}')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
