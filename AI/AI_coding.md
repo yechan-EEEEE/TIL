@@ -14,8 +14,6 @@ MCP
     w(가중치, weight): 직선의 기울기
     b(바이어스, bias): 직선의 y절편
 
-    (다중 선형 회귀): 두 개 이상의 특성(Feature)이 있을 때
-
     가설(hypothesis):
     예측에 사용할 직선의 방정식(모델)
     y = wx + b
@@ -25,7 +23,7 @@ MCP
     모델(가설)이 얼마나 좋은 모델인지 나타내는 점수 (=시간복잡도)
     손실 함수(Loss Function)라고도 함
         종류:
-        (회귀)평균 제곱 오차(MSE, Mean Squared Error):
+        (회귀에서 사용)평균 제곱 오차(MSE, Mean Squared Error):
             모델의 예측값이 실제 정답과 얼마나 차이 나는지 측정하는 방법
             점수가 낮을 수록 좋은 모델
             계산 방법:
@@ -58,27 +56,33 @@ MCP
                             학습률(Learning Rate, alpha): 보폭
                             허용 오차(Tolerance, tol): 학습 조기 종료 조건, 모델의 오차 감소량이 매우 작아지면, 학습을 중단
                             배치 크기(batch): 기울기를 구할 때, 전체 데이터 오차의 기울기를 한 번에 구하지 않음/ 작은 묶음(배치)로 나눠서 처리/ 전체 데이터 오차의 기울기를 한 번에 구하면 1iterations = 1epoch
-                            기울기 누적 스텝(Gradient Accumulation Steps)
+                            기울기 누적 스텝(Gradient Accumulation Steps): 실질적인 배치 크기를 늘리는 고급 기법, 매 배치마다 업데이트하지 않고, n번의 배치 간격으로 누적한 기울기를 기반으로 이동
                         1. 배치 경사 하강법(Batch Gradient Descent)
+                            전체 데이터를 훑어보고, 기울기를 계산
                             정확하지만, 데이터가 크면 매우 느림
                         2. 확률적 경사 하강법(Stochastic Gradient Descent)
+                            하나의 데이터만 보고 기울기를 계산
                             매우 빠르지만, 불안
                         3. 미니배치 경사 하강법(Mini-batch Gradient Descent)
                             적당한 수의 배치(batch)만 보고 기울기를 계산, 속도/ 안정성 모두를 잡음
 
-다중회귀(multiple regression)
+다중 선형 회귀: 두 개 이상의 특성(Feature)이 있을 때
+
 다항회귀(polynomial regression)
     
 분류(Classification)
 로지스틱회귀(logistic regression):
-        선형 회귀 + 시그모이드 함수 + 이진 교차 엔트로피
+    선형 회귀 + 시그모이드 함수 + 이진 교차 엔트로피(Binary Cross Entropy)
+    이진 분류 문제 해결 방법:
+        시그모이드 함수
+        
         데이터를 특정 그룹으로 나누는 이진 분류 방법
         평균 제곱 오차 대신 이진 교차 엔트로피(Binary Cross Entropy)를 사용
             이진 분류 문제를 위한 전용 손실 함수
             틀린 답에 대해 모델이 얼마나 강하게 확신했느냐에 따라 벌점의 크기를 기하급수적으로 늘리는 것
-    소프트맥스 회귀(Softmax Regression)
+    다중 분류 문제 해결 방법:
+        소프트맥스 회귀(Softmax Regression)
         선형 회귀 + 소프트맥스 함수(Softmax) + 범주형 교차 엔트로피(Categorical Cross Entropy)
-        다중 분류 문제 해결 방법:
             소프트맥스(Softmax) 함수
             모든 클래스에 대한 확률의 총합이 반드시 1이 되도록 만들어주는 함수
         (회귀)평균 절대 오차(MAE, Mean Absolute Error)
@@ -95,3 +99,13 @@ MCP
         표준화(선호): 제각각인 데이터의 단위를 공평하게 맞춰주는 작업/ 데이터의 평균을 0, 표준편차를 1로 맞춤/ 이상치에 덜 민감
         정규화: 흩어져 있는 모든 데이터의 값을 0과 1 사이의 범위로 변환
         데이터의 범위를 명확하게 제한하고 싶은 경우에 활용/ 데이터의 최솟값 최대값을 명확히 알면 유용함, 이상치에 민감
+
+데이터 EDA
+탐색적 데이터 분석(EDA, Exploratory Data Analysis)
+데이터를 본격적으로 분석하기 전에 여러 각도에서 관찰하고 이해하는 과정
+데이터를 깊이 이해하는 모든 프로젝트의 첫 과정
+
+아이스크림 판매량 = 상어 공격 횟수 증가
+상관관계 O 인과관계 X
+
+단변수(데이터 타입이 하나) 분석
