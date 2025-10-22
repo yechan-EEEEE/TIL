@@ -24,68 +24,126 @@ N과 M은 3 이상 300 이하이다.
 i나 j가 0이 아닌 곳에서만
 주변의 0 개수만큼 빼는데 visited를 확인하고 처음인 부분만 세서 빼기
 한 바퀴 다 돌고 덩어리 개수 세서 두 덩어리 이상이면 cnt출력
-아직 한덩어리면 visited 초기화하고 다시
+아직 한덩어리면 다시
 전부 0이 돼버리면 0 출력
 """
+# from collections import deque
+# import copy
+# dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+
+# def cnt_ice(arr):
+#     visited = [[False] * M for _ in range(N)]
+#     cnt = 0
+    
+#     for i in range(N):
+#         for j in range(M):
+#             if arr[i][j] > 0 and not visited[i][j]:  # 빙산이 있는 곳부터 시작
+#                 cnt += 1  # 덩어리 개수 증가
+#                 queue = deque([(i, j)])
+#                 visited[i][j] = True
+                
+#                 while queue:
+#                     cx, cy = queue.popleft()
+#                     for dx, dy in dxy:
+#                         nx, ny = cx + dx, cy + dy
+#                         if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] > 0 and not visited[nx][ny]:
+#                             queue.append((nx, ny))
+#                             visited[nx][ny] = True
+#     return cnt
+
+
+# def melt_ice(arr):
+#     new_arr = copy.deepcopy(arr)  # 빙산 녹은 후의 상태를 저장할 새로운 배열
+    
+#     for i in range(N):
+#         for j in range(M):
+#             if arr[i][j] > 0:
+#                 zero_cnt = 0  # 주변 0의 개수 세기
+#                 for dx, dy in dxy:
+#                     nx, ny = i + dx, j + dy
+#                     if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] == 0:
+#                         zero_cnt += 1
+#                 new_arr[i][j] = max(0, arr[i][j] - zero_cnt)  # 다 녹으면 0이 되니까 -가 안되게 최대값을 0으로 설정
+    
+#     return new_arr
+
+# N, M = map(int, input().split())
+# ice = [list(map(int, input().split())) for _ in range(N)]
+
+# year = 0
+
+# while True:
+#     num_of_ice = cnt_ice(ice)  # 빙산 덩어리 개수 세기
+    
+#     # 빙산이 두 덩어리 이상이면 종료
+#     if num_of_ice >= 2:
+#         print(year)
+#         break
+    
+#     # 빙산이 다 녹았으면 0 출력
+#     if num_of_ice == 0:
+#         print(0)
+#         break
+    
+#     # 두 경우 다 아니면 빙산 녹이기
+#     ice = melt_ice(ice)
+#     year += 1  # 년도 증가
+
+# 시간초과= 1. deepcopy는 매우 느리다, 2. cnt_ice에서 덩어리 개수 셀 때 매번 전체 탐색
+
 from collections import deque
-import copy
-dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
 
-def cnt_ice(arr):
+def cnt_ice():
     visited = [[False] * M for _ in range(N)]
     cnt = 0
-    
     for i in range(N):
         for j in range(M):
-            if arr[i][j] > 0 and not visited[i][j]:
+            if ice[i][j] > 0 and not visited[i][j]:
                 cnt += 1
-                queue = deque([(i, j)])
+                if cnt >= 2:
+                    return cnt
+                q = deque([(i, j)])
                 visited[i][j] = True
-                
-                while queue:
-                    cx, cy = queue.popleft()
+                while q:
+                    x, y = q.popleft()
                     for dx, dy in dxy:
-                        nx, ny = cx + dx, cy + dy
-                        if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] > 0 and not visited[nx][ny]:
-                            queue.append((nx, ny))
-                            visited[nx][ny] = True
+                        nx, ny = x + dx, y + dy
+                        if 0 <= nx < N and 0 <= ny < M:
+                            if ice[nx][ny] > 0 and not visited[nx][ny]:
+                                visited[nx][ny] = True
+                                q.append((nx, ny))
     return cnt
 
 
-def melt_ice(arr):
-    new_arr = copy.deepcopy(arr)
-    
+def melt():
+    melt_amount = [[0] * M for _ in range(N)]
     for i in range(N):
         for j in range(M):
-            if arr[i][j] > 0:
-                zero_cnt = 0
+            if ice[i][j] > 0:
                 for dx, dy in dxy:
                     nx, ny = i + dx, j + dy
-                    if 0 <= nx < N and 0 <= ny < M and arr[nx][ny] == 0:
-                        zero_cnt += 1
-                new_arr[i][j] = max(0, arr[i][j] - zero_cnt)
-    
-    return new_arr
+                    if 0 <= nx < N and 0 <= ny < M and ice[nx][ny] == 0:
+                        melt_amount[i][j] += 1
 
+    for i in range(N):
+        for j in range(M):
+            ice[i][j] = max(0, ice[i][j] - melt_amount[i][j])
 N, M = map(int, input().split())
 ice = [list(map(int, input().split())) for _ in range(N)]
 
-year = 0
 
+dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+year = 0
 while True:
-    num_of_ice = cnt_ice(ice)
-    
-    # 빙산이 두 덩어리 이상이면 종료
-    if num_of_ice >= 2:
-        print(year)
-        break
-    
-    # 빙산이 모두 녹았으면 0 출력
-    if num_of_ice == 0:
+    c = cnt_ice()
+    if c == 0:
         print(0)
         break
-    
-    # 빙산 녹이기
-    ice = melt_ice(ice)
+    if c >= 2:
+        print(year)
+        break
+    melt()
     year += 1
