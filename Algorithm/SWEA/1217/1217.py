@@ -19,11 +19,13 @@
 
 
 def mul(a, b):
-    if b == 1:
-        
-    pass
+    if b == 0:
+        return 1
+    else:
+        return a * mul(a, b - 1)
 
 
 for _ in range(10):
     T = int(input())
     N, M = map(int, input().split())
+    print(f"#{T} {mul(N, M)}")
