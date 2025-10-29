@@ -60,7 +60,7 @@ dxyz = [(0, 0, -1), (0, 0, 1), (0, -1, 0), (0, 1, 0), (-1, 0, 0), (1, 0, 0)]
 bfs 돌다가 전부 1 되면 카운트 출력
 queue 비면 카운트 출력
 1 나온 곳부터 bfs
-bfs 끝나고 arr에 0 있으면 -1
+bfs 끝나고 arr 에 0 있으면 -1
 """
 from collections import deque
 
@@ -94,7 +94,7 @@ M, N, H = map(int, input().split())
 tomato = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
 dxyz = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]
 
-result = bfs()  # 토마토는 무조건 하나 이상 들어있어서 result는 최소 0
+result = bfs()  # 토마토는 무조건 하나 이상 들어있어서 result 는 최소 0
 
 for layer in tomato:
     for row in layer:
