@@ -504,4 +504,58 @@ n * m 크기의 격자에 먼지가 쌓여있다
     기계의 윗칸에서는 반시계 방향으로 아랫칸에서는 시계 방향으로 바람을 일으킴
     바람이 불면 먼지가 바람의 방향대로 모두 한칸씩 이동
     기계에서 나온 바람은 먼지가 없고 기계로 들어간 먼지는 사라짐
+<<<<<<< HEAD
 """
+=======
+"""
+# arr = [[1,2],3,[1,1]]
+# print(*arr)
+# n, k = map(int, input().split())
+# block = [0] * n + [0]
+
+# for i in range(k):
+#     a, b = map(int, input().split())
+#     while True:
+#         block[a] += 1
+#         if a == b:
+#             break
+#         a += 1
+
+# print(max(block))
+
+# n = int(input())
+# arr = [[0] * 201 for _ in range(201)]
+# cnt = 0
+
+# for _ in range(n):
+#     x1, y1, x2, y2 = map(int, input().split())
+#     x1 += 100
+#     y1 += 100
+#     x2 += 100
+#     y2 += 100
+#     for i in range(x1, x2):
+#         for j in range(y1, y2):
+#             arr[i][j] = 1
+# for k in range(201):
+#     for l in range(201):
+#         if arr[k][l] == 1:
+#             cnt += 1
+# print(cnt)
+# n = int(input())
+# grid = [list(map(int, input().split())) for _ in range(n)]
+# dxy = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+# cnt = 0
+
+# for i in range(n):
+#     for j in range(n):
+#         x, y = i, j
+#         one_cnt = 0
+#         for dx, dy in dxy:
+#             nx, ny = x + dx, y + dy
+#             if 0 <= nx < n and 0 <= ny < n:
+#                 if grid[nx][ny] == 1:
+#                     one_cnt += 1
+#         if one_cnt >= 3:
+#             cnt += 1
+# print(cnt)
+>>>>>>> 548723543038ce8fe4755bd308ec0eb9890f161f
