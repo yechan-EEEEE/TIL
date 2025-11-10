@@ -504,9 +504,6 @@ n * m 크기의 격자에 먼지가 쌓여있다
     기계의 윗칸에서는 반시계 방향으로 아랫칸에서는 시계 방향으로 바람을 일으킴
     바람이 불면 먼지가 바람의 방향대로 모두 한칸씩 이동
     기계에서 나온 바람은 먼지가 없고 기계로 들어간 먼지는 사라짐
-<<<<<<< HEAD
-"""
-=======
 """
 # arr = [[1,2],3,[1,1]]
 # print(*arr)
@@ -558,4 +555,36 @@ n * m 크기의 격자에 먼지가 쌓여있다
 #         if one_cnt >= 3:
 #             cnt += 1
 # print(cnt)
->>>>>>> 548723543038ce8fe4755bd308ec0eb9890f161f
+from PIL import Image, ImageOps
+
+# 원본 GIF 열기
+img = Image.open("image.gif")
+
+frames = []
+durations = []
+disposals = []
+
+# 각 프레임 순회
+for frame in range(img.n_frames):
+    img.seek(frame)
+    frame_copy = img.copy()
+
+    # 좌우반전
+    flipped = ImageOps.mirror(frame_copy)
+
+    frames.append(flipped)
+    durations.append(img.info.get("duration", 100))  # 원본 프레임 지속시간 복사
+    disposals.append(img.disposal_method if hasattr(img, "disposal_method") else 1)
+
+# 첫 프레임 저장
+frames[0].save(
+    "flipped_smooth.gif",
+    save_all=True,
+    append_images=frames[1:],
+    duration=durations,
+    disposal=disposals,
+    loop=img.info.get("loop", 0),
+    transparency=img.info.get("transparency", 0),
+)
+
+print("✅ 프레임 속도·효과 그대로 유지된 좌우반전 GIF 저장 완료!")
