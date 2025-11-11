@@ -1,33 +1,34 @@
-from PIL import Image
+from PIL import Image, ImageSequence, ImageOps
+import numpy as np
 
-# 원본 GIF 열기
-img = Image.open("turtle.gif")
-
+# 1. 원본 PNG 파일 불러오기
+img = Image.open("2.png").convert("RGBA")
 frames = []
-durations = []
-disposals = []
 
-# 각 프레임 순회
-for frame in range(img.n_frames):
-    img.seek(frame)
-    frame_copy = img.copy()
+# 2. 찌그러짐 정도를 조절하는 범위
+# 1.0 = 원본, 0.5 = 절반으로 압축
+scale_values = np.linspace(1.0, 0.5, 5)  # 왼쪽으로 찌그러짐
+scale_values = np.concatenate([scale_values, scale_values[::-1]])  # 왔다갔다
 
-    # 🌀 시계 방향(오른쪽)으로 90도 회전
-    rotated = frame_copy.rotate(-90, expand=True)
+for scale in scale_values:
+    w, h = img.size
+    new_w = int(w * scale)
+    # 이미지 좌우 압축
+    frame = img.resize((new_w, h), Image.LANCZOS)
+    
+    # 좌우 중앙 정렬을 위해 흰 배경 만들기
+    background = Image.new("RGBA", (w, h), (255, 255, 255, 0))
+    offset = (w - new_w) // 2
+    background.paste(frame, (offset, 0))
+    
+    frames.append(background)
 
-    frames.append(rotated)
-    durations.append(img.info.get("duration", 100))  # 프레임 시간 복사
-    disposals.append(getattr(img, "disposal_method", 1))
-
-# 새 GIF 저장
+# 3. GIF로 저장
 frames[0].save(
-    "rotated_right.gif",
+    "squash.gif",
     save_all=True,
     append_images=frames[1:],
-    duration=durations,
-    disposal=disposals,
-    loop=img.info.get("loop", 0),
-    transparency=img.info.get("transparency", 0)
+    duration=100,  # 각 프레임 지속 시간(ms)
+    loop=0,
+    disposal=2
 )
-
-print("✅ 오른쪽으로 회전된 GIF 저장 완료!")
