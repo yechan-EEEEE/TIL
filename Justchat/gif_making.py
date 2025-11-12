@@ -2,7 +2,7 @@ from PIL import Image, ImageSequence, ImageOps
 import numpy as np
 
 # 1. 원본 PNG 파일 불러오기
-img = Image.open("2.png").convert("RGBA")
+img = Image.open("3.png").convert("RGBA")
 frames = []
 
 # 2. 찌그러짐 정도를 조절하는 범위
