@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('1')
+
+    setTimeout(function myFunc() {
+      console.log('work')
+    }, 3000)
+
+    setTimeout(function myFunc() {
+      console.log('work2')
+    }, 2999.9999999999999)
+    
+    setTimeout(function myFunc() {
+      console.log('work3')
+    }, 2999.999999999999)
+    
+    console.log('2')
+  </script>
+</body>
+</html>
