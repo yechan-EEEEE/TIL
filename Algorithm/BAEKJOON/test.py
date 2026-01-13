@@ -1,10 +1,15 @@
-A, B = map(int, input().split())
-C = int(input())
-result_H, result_M = 0, 0
+A, B, C = map(int, input().split())
+price = 0
 
-result_H = A + ((B + C) // 60)
-if result_H > 23:
-    result_H -= 24
-result_M = (B + C) % 60
+if A == B == C:
+    price = 10000 + A * 1000
+elif A == B != C:
+    price = 1000 + A * 100
+elif A != B == C:
+    price = 1000 + B * 100
+elif A == C != B:
+    price = 1000 + C * 100
+else:
+    price = 100 * max(A, B, C)
 
-print(result_H, result_M)
+print(price)
