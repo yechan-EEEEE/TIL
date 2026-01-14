@@ -15,8 +15,9 @@ long long int는 8바이트 정수까지 저장할 수 있는 정수 자료형�
 출력
 혜아가 N바이트 정수까지 저장할 수 있다고 생각하는 정수 자료형의 이름을 출력하여라.
 """
-N = int(input())
-repeat_num = int(N / 4)
-for i in range(repeat_num):
-    print("long", end=" ")
-print("int")
+import sys
+
+T = int(sys.stdin.readline())
+for t in range(1, T + 1):
+    A, B = map(int, sys.stdin.readline().split())
+    print(A + B)
