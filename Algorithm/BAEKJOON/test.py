@@ -15,6 +15,12 @@ input() > sys.stdin.readline()
 import sys
 
 N = int(sys.stdin.readline())
-n_list = []
-n_list.append(map(int, sys.stdin.readline().split()))
+n_list = list(map(int, sys.stdin.readline().split()))
 v = int(sys.stdin.readline())
+result = 0
+
+for i in n_list:
+    if i == v:
+        result += 1
+
+print(result)
