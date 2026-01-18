@@ -35,5 +35,6 @@ result = bucket
 
 for l in range(M):
     i, j = map(int, sys.stdin.readline().split())
-    bucket[i]
-print(bucket)
+    bucket[i-1], bucket[j-1] = bucket[j-1], bucket[i-1]
+
+print(*bucket)
