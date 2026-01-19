@@ -58,10 +58,3 @@
 4 0
         2
 """
-import sys
-
-while True:
-    input_value = sys.stdin.readline()
-    if not input_value:
-        break
-    print(input_value, end="")
