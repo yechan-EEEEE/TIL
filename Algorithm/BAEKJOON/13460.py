@@ -23,10 +23,3 @@
 출력
 최소 몇 번 만에 빨간 구슬을 구멍을 통해 빼낼 수 있는지 출력한다. 만약, 10번 이하로 움직여서 빨간 구슬을 구멍을 통해 빼낼 수 없으면 -1을 출력한다.
 """
-import sys
-
-while True:
-    input_value = sys.stdin.readline()
-    if not input_value:
-        break
-    print(input_value, end="")
