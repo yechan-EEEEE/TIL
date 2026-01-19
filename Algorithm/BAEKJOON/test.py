@@ -23,45 +23,32 @@
 
 출력
 각 테스트 케이스에 대해 필요한 최소의 배추흰지렁이 마리 수를 출력한다.
-
-2
-10 8 17
-0 0
-1 0
-1 1
-4 2
-4 3
-4 5
-2 4
-3 4
-7 4
-8 4
-9 4
-7 5
-8 5
-9 5
-7 6
-8 6
-9 6
-        5
-10 10 1
-5 5
-        1
-
-1
-5 3 6
-0 2
-1 2
-2 2
-3 2
-4 2
-4 0
-        2
 """
 import sys
+from collections import deque
 
-while True:
-    input_value = sys.stdin.readline()
-    if not input_value:
-        break
-    print(input_value, end="")
+dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+T = int(sys.stdin.readline())
+
+for t in range(T):
+    M, N, K = map(int, sys.stdin.readline().split())
+    farm = [[0] * M for _ in range(N)]
+    warm = 0
+    for k in range(K):
+        X, Y = map(int, sys.stdin.readline().split())
+        farm[Y][X] = 1
+    for i in range(N):
+        q = deque()
+        for j in range(M):
+            if farm[j][i] == 1:
+                q.append((i, j))
+                warm += 1
+                farm[j][i] = 0
+            while q:
+                x, y = q.popleft()
+                for dx, dy in dxy:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < M and 0 <= ny < N and farm[nx][ny] == 1:
+                        q.append((nx, ny))
+                        farm[ny][nx] = 0
+    print(warm)
