@@ -58,3 +58,31 @@
 4 0
         2
 """
+import sys
+from collections import deque
+
+dxy = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+T = int(sys.stdin.readline())
+
+for t in range(T):
+    M, N, K = map(int, sys.stdin.readline().split())
+    farm = [[0] * M for _ in range(N)]
+    warm = 0
+    for k in range(K):
+        X, Y = map(int, sys.stdin.readline().split())
+        farm[Y][X] = 1
+    for i in range(N):
+        q = deque()
+        for j in range(M):
+            if farm[i][j] == 1:
+                q.append((i, j))
+                warm += 1
+                farm[i][j] = 0
+            while q:
+                x, y = q.popleft()
+                for dx, dy in dxy:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < N and 0 <= ny < M and farm[nx][ny] == 1:
+                        q.append((nx, ny))
+                        farm[nx][ny] = 0
+    print(warm)
