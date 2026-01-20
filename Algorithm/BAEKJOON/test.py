@@ -40,15 +40,15 @@ for t in range(T):
     for i in range(N):
         q = deque()
         for j in range(M):
-            if farm[j][i] == 1:
+            if farm[i][j] == 1:
                 q.append((i, j))
                 warm += 1
-                farm[j][i] = 0
+                farm[i][j] = 0
             while q:
                 x, y = q.popleft()
                 for dx, dy in dxy:
                     nx, ny = x + dx, y + dy
-                    if 0 <= nx < M and 0 <= ny < N and farm[nx][ny] == 1:
+                    if 0 <= nx < N and 0 <= ny < M and farm[nx][ny] == 1:
                         q.append((nx, ny))
-                        farm[ny][nx] = 0
+                        farm[nx][ny] = 0
     print(warm)
