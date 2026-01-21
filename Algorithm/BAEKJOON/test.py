@@ -34,12 +34,62 @@ NxN크기의 땅이 있고, 땅은 1x1개의 칸으로 나누어져 있다.
             2
 """
 import sys
+from collections import deque
+input = sys.stdin.readline
 dxy = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-N, L, R = map(int, sys.stdin.readline().split())
-countries = []
-for _ in range(N):
-    countries.append(list(map(int, sys.stdin.readline().split())))
+N, L, R = map(int, input().split())
+countries = [list(map(int, input().split())) for _ in range(N)]
 
+
+def can_open(x, y):
+    for dx, dy in dxy:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < N and 0 <= ny < N:
+            if L <= abs(countries[x][y] - countries[nx][ny]) <= R:
+                return True
+    return False
+
+
+days = 0
 while True:
-    visited = [[0] * N for _ in range(N)]
+    visited = [[False] * N for _ in range(N)]
+    moved = False
+
+    for i in range(N):
+        for j in range(N):
+            if visited[i][j]:
+                continue
+
+            if not can_open(i, j):
+                visited[i][j] = True
+                continue
+            
+            queue = deque()
+            queue.append((i, j))
+            visited[i][j] = True
+
+            union = [(i, j)]
+            population_sum = countries[i][j]
+
+            while queue:
+                x, y = queue.popleft()
+                for dx, dy in dxy:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < N and 0 <= ny < N and not visited[nx][ny]:
+                        if L <= abs(countries[x][y] - countries[nx][ny]) <= R:
+                            visited[nx][ny] = True
+                            queue.append((nx, ny))
+                            union.append((nx, ny))
+                            population_sum += countries[nx][ny]
+            if len(union) > 1:
+                moved = True
+                new_pop = population_sum // len(union)
+                for x, y in union:
+                    countries[x][y] = new_pop
+    if not moved:
+        break
+
+    days += 1
+
+print(days)
