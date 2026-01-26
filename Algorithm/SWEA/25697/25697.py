@@ -75,4 +75,4 @@ t = int(input())
 for _ in range(t):
     _, x = map(int, input().split())
     lst = list(map(int, input().split()))
-    print(solve(x, lst))
+    print(solve(x, lst)) 
