@@ -41,43 +41,38 @@
 import sys
 input = sys.stdin.readline
 
-T = int(input())
-for _ in range(T):
-    N, X = map(int, input().split())
-    d_list = list(map(int, input().split()))
-    X = abs(X)
+def solve(x, lst):
+    if x == 0:
+        return 0
+    x = abs(x)  # 도착 거리
+ 
+    sl = sum(lst)  # 한 루프 돌았을 때 거리
+    if x >= sl:  # 한 루프를 꽉 채우거나 그 이상일 때
+        dd, m = divmod(x, sl)  # 몫, 나머지
+        answer = dd * len(lst)  # 바퀴 수 * 한 바퀴당 점프 횟수
+        if m <= 0:  # 딱 떨어지면 바퀴 수만큼만 뜀
+            return answer
+        for d in lst:  # 남은 거리를 빼가면서 도착하면 return
+            m -= d
+            answer += 1
+            if m <= 0:
+                return answer
+    else:  # 한 루프를 다 돌기 전에 도착할 때
+        maxd = lst[0]
+        sumd = 0
+        answer = 0
+        for _ in range(2):
+            for d in lst:
+                sumd += d
+                maxd = max(maxd, d)
+                answer += 1
+                if max(0, 2 * maxd - sumd) <= x <= sumd:
+                    return answer
+    return -1
 
-    cnt = 0
-    cur_distance = 0
-    max_jump = 0
-    found = False
-
-    while cnt <= 10**7:
-        for i in d_list:
-            cur_distance += i
-            max_jump = max(max_jump, i)
-            cnt += 1
-
-            if cnt == 1:
-                if cur_distance == X:
-                    found = True
-            elif cnt == 2:
-                d0 = d_list[0]
-                if len(d_list) > 1:
-                    d1 = d_list[1]
-                else:
-                    d1 = d_list[0]
-                if abs(d0 - d1) <= X <= cur_distance:
-                    found = True
-            else:
-                if (2 * max_jump - cur_distance) <= X <= cur_distance:
-                    found = True
-
-            if found:
-                print(cnt)
-                break
-
-        if found:
-            break
-    else:
-        print(-1)
+t = int(input())
+ 
+for _ in range(t):
+    _, x = map(int, input().split())
+    lst = list(map(int, input().split()))
+    print(solve(x, lst))
