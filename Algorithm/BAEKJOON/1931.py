@@ -9,7 +9,7 @@
 첫째 줄에 회의의 수 N(1 ≤ N ≤ 100,000)이 주어진다.
 둘째 줄부터 N+1 줄까지 각 회의의 정보가 주어지는데
 이것은 공백을 사이에 두고 회의의 시작시간과 끝나는 시간이 주어진다.
-시작 시간과 끝나는 시간은 231-1보다 작거나 같은 자연수 또는 0이다.
+시작 시간과 끝나는 시간은 2³¹-1보다 작거나 같은 자연수 또는 0이다.
 
 출력
 첫째 줄에 최대 사용할 수 있는 회의의 최대 개수를 출력한다.
@@ -27,4 +27,22 @@
 2 13
 12 14
         4
+0 6 /2 13 /1 4 /3 5 /3 8 /5 7 /5 9 /6 10 /8 11 /8 12 /12 14
+끝나는 시간 기준 정렬
+시작 시간이 이전 끝나는 시간보다 크거나 같으면 카운트 +1 하면서 바꾸기
+끝까지 가면 끝
 """
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+meetings = [list(map(int, input().split())) for _ in range(N)]
+cnt = 1
+
+meetings.sort(key=lambda x: (x[1], x[0]))
+end_time = meetings[0][1]
+for i in range(1, N):
+    if meetings[i][0] >= end_time:
+        end_time = meetings[i][1]
+        cnt += 1
+print(cnt)
