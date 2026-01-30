@@ -19,33 +19,8 @@
 """
 import sys
 input = sys.stdin.readline
-135246
-x = 10000000
-y = 0
-cnt = 0
-while True:
-    y+=1
-    cnt+=1
-    if y>x:
-        break
-    y+=3
-    cnt+=1
-    if y>x:
-        break
-    y+=5
-    cnt+=1
-    if y>x:
-        break
-    y+=2
-    cnt+=1
-    if y>x:
-        break
-    y+=4
-    cnt+=1
-    if y>x:
-        break
-    y+=6
-    cnt+=1
-    if y>x:
-        break
-print(cnt)
+N, M = map(int, input().split())
+buckets = [list(map(int, input().split())) for _ in range(N)]
+moves = [tuple(map(int, input().split())) for _ in range(M)]
+clouds = [(N-1, 0), (N-1, 1), (N-2, 0), (N-2, 1)]
+print(buckets[1][2])

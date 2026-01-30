@@ -28,4 +28,80 @@ M번의 이동이 모두 끝난 후 바구니에 들어있는 물의 양의 합�
 
 출력
 첫째 줄에 M번의 이동이 모두 끝난 후 바구니에 들어있는 물의 양의 합을 출력한다.
+5 4
+0 0 1 0 2
+2 3 2 1 0
+4 3 2 9 0
+1 0 2 9 0
+8 8 2 1 0
+1 3
+3 4
+8 1
+4 8
+            77
+5 8
+0 0 1 0 2
+2 3 2 1 0
+0 0 2 0 0
+1 0 2 0 0
+0 0 2 1 0
+1 9
+2 8
+3 7
+4 6
+5 5
+6 4
+7 3
+8 2
+            41
+5 8
+100 100 100 100 100
+100 100 100 100 100
+100 100 100 100 100
+100 100 100 100 100
+100 100 100 100 100
+8 1
+7 1
+6 1
+5 1
+4 1
+3 1
+2 1
+1 1
+        2657
 """
+import sys
+input = sys.stdin.readline
+N, M = map(int, input().split())
+buckets = [list(map(int, input().split())) for _ in range(N)]
+moves = [tuple(map(int, input().split())) for _ in range(M)]
+clouds = [(N-1, 0), (N-1, 1), (N-2, 0), (N-2, 1)]
+directions = [(0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1)]
+
+for dir, dist in moves:
+    dir -= 1
+    new_clouds = []
+    for x, y in clouds:
+        nx = (x + directions[dir][0] * dist) % N
+        ny = (y + directions[dir][1] * dist) % N
+        new_clouds.append((nx, ny))
+    clouds = new_clouds
+    visited = [[False] * N for _ in range(N)]
+    for x, y in clouds:
+        buckets[x][y] += 1
+        visited[x][y] = True
+    for x, y in clouds:
+        count = 0
+        for dx, dy in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < N and 0 <= ny < N and buckets[nx][ny] > 0:
+                count += 1
+        buckets[x][y] += count
+    clouds = []
+    for i in range(N):
+        for j in range(N):
+            if buckets[i][j] >= 2 and not visited[i][j]:
+                clouds.append((i, j))
+                buckets[i][j] -= 2
+result = sum(map(sum, buckets))
+print(result)
