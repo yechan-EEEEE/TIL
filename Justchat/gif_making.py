@@ -1,38 +1,34 @@
 from PIL import Image
 
-# 1. 원본 이미지 불러오기
+# 이미지 불러오기 및 크기 조정 (용량 최적화)
 img = Image.open("개추.png").convert("RGBA")
+img.thumbnail((128, 128)) # 이모지는 보통 128x128이면 충분합니다.
 w, h = img.size
 
-# 정사각형 캔버스 크기 결정 (회전 시 모서리가 잘리지 않도록 대각선 길이 고려)
-# 이미지가 직사각형일 경우 회전하면 모서리가 잘릴 수 있어 여유 있는 크기로 만듭니다.
-max_dim = int((w**2 + h**2)**0.5)
 frames = []
-
-# 프레임 수 (숫자가 클수록 천천히, 부드럽게 돕니다)
-num_frames = 30 
+num_frames = 20 
 
 for i in range(num_frames):
-    # 1. 회전 각도 계산 (왼쪽으로 구르려면 시계 반대 방향: +값)
+    # 왼쪽으로 회전 (시계 반대 방향)
     angle = (i / num_frames) * 360
     
-    # 2. 이미지 회전 (resample로 화질 유지, expand=False로 크기 유지)
-    # 중심(center)을 기준으로 회전합니다.
-    rotated_img = img.rotate(angle, resample=Image.BICUBIC, center=(w/2, h/2))
-    
-    # 3. 새 투명 배경 생성 (이미지 크기와 동일하게)
+    # 1. 투명한 정사각형 캔버스를 매 프레임 새로 만듭니다.
     frame = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     
-    # 4. 회전된 이미지를 중앙에 배치
-    frame.paste(rotated_img, (0, 0), rotated_img)
+    # 2. 회전된 이미지 생성
+    rotated_img = img.rotate(angle, resample=Image.BICUBIC, center=(w/2, h/2))
+    
+    # 3. 새 캔버스에 회전된 이미지를 붙입니다.
+    frame.alpha_composite(rotated_img) # paste 대신 alpha_composite 사용 (투명도 유지)
     frames.append(frame)
 
-# GIF 저장
+# 4. GIF 저장 (잔상 방지 핵심 설정)
 frames[0].save(
-    "rotate_center.gif",
+    "emoji_fixed.gif",
     save_all=True,
     append_images=frames[1:],
-    duration=40, # 프레임 간격 (ms), 낮을수록 빨라짐
+    duration=50,
     loop=0,
-    disposal=2 # 이전 프레임을 지우고 새로 그려서 잔상을 방지
+    disposal=2,      # 2번 옵션: 다음 프레임 그리기 전에 이전 프레임을 완전히 삭제
+    optimize=False   # 가끔 과한 최적화가 disposal 설정을 망치기도 하니 False로 시도해 보세요
 )
