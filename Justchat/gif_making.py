@@ -1,34 +1,34 @@
 from PIL import Image
-import numpy as np
 
-# 1. 원본 이미지
-img = Image.open("븪_left.png").convert("RGBA")
+# 이미지 불러오기 및 크기 조정 (용량 최적화)
+img = Image.open("개추.png").convert("RGBA")
+img.thumbnail((128, 128)) # 이모지는 보통 128x128이면 충분합니다.
 w, h = img.size
+
 frames = []
+num_frames = 20 
 
-# 프레임 수 (값을 늘리면 더 부드러움)
-num_frames = 40
-
-# w → 0 까지 일정한 속도로 이동 (왼쪽으로)
-shift_values = np.linspace(w, 0, num_frames, endpoint=False)  # 왼쪽으로 이동하도록 설정
-for shift in shift_values:
-    shift = int(shift)
+for i in range(num_frames):
+    # 왼쪽으로 회전 (시계 반대 방향)
+    angle = (i / num_frames) * 360
     
-    # 왼쪽 부분 + 오른쪽 부분 이어붙이기 (loop)
-    left_part = img.crop((w - shift, 0, w, h))  # 오른쪽 부분이 왼쪽으로 오게
-    right_part = img.crop((0, 0, w - shift, h))  # 왼쪽 부분을 뒤에 붙임
-
-    frame = Image.new("RGBA", (w, h))
-    frame.paste(left_part, (0, 0))  # 왼쪽 부분을 먼저 붙임
-    frame.paste(right_part, (left_part.width, 0))  # 오른쪽 부분을 뒤에 붙임
+    # 1. 투명한 정사각형 캔버스를 매 프레임 새로 만듭니다.
+    frame = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    
+    # 2. 회전된 이미지 생성
+    rotated_img = img.rotate(angle, resample=Image.BICUBIC, center=(w/2, h/2))
+    
+    # 3. 새 캔버스에 회전된 이미지를 붙입니다.
+    frame.alpha_composite(rotated_img) # paste 대신 alpha_composite 사용 (투명도 유지)
     frames.append(frame)
 
-# GIF 저장
+# 4. GIF 저장 (잔상 방지 핵심 설정)
 frames[0].save(
-    "scroll_loop_left.gif",
+    "emoji_fixed.gif",
     save_all=True,
     append_images=frames[1:],
-    duration=30,
+    duration=50,
     loop=0,
-    disposal=2
+    disposal=2,      # 2번 옵션: 다음 프레임 그리기 전에 이전 프레임을 완전히 삭제
+    optimize=False   # 가끔 과한 최적화가 disposal 설정을 망치기도 하니 False로 시도해 보세요
 )
